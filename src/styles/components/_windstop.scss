@@ -1,0 +1,23 @@
+#windStop {
+  display: flex;
+  left: 50%;
+  height: fit-content;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+#windStop img {
+  height: 91.69%;
+  opacity: .3;
+  transform: rotate(0deg);
+  transition: .75s;
+}
+
+#windStop img.zoom {
+  height: 200%;
+  transition: 2s !important;
+}

@@ -1,0 +1,22 @@
+nav {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+nav a {
+  color: $white !important;
+  font-family: 'Gill Sans';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 77px;
+  text-align: right;
+  text-transform: uppercase;
+}
+nav a:hover {
+  color: $link-yellow !important;
+}
+.is-active {
+  color: $link-yellow !important;
+}
