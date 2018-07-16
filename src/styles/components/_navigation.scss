@@ -23,6 +23,8 @@ nav a:hover {
 .is-active::before {
   content: url('/images/scope-hovericon.svg');
   margin-right: 15px;
+  position: relative;
+  top: 7px;
 }
 #careersLink.is-active::before {
   content: none;
