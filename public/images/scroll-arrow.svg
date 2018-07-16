@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="14px" viewBox="0 0 27 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Chevron-thin-down</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Panel-1" transform="translate(-707.000000, -730.000000)" fill="#FAD150">
+            <path d="M708.854583,730.305481 C708.430122,729.898275 707.742571,729.898275 707.31811,730.305481 C706.894277,730.712079 706.893649,731.372495 707.31811,731.779702 L719.731705,743.694595 C720.156166,744.101802 720.843717,744.101802 721.268178,743.694595 L733.681772,731.779702 C734.105919,731.372495 734.106233,730.712687 733.681772,730.305481 C733.257311,729.898275 732.56976,729.898275 732.145299,730.304872 L720.499941,741.171316 L708.854583,730.305481 L708.854583,730.305481 Z" id="Chevron-thin-down"></path>
+        </g>
+    </g>
+</svg>

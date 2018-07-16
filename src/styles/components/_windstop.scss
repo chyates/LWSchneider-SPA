@@ -7,17 +7,37 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 4;
 }
-
 #windStop img {
   height: 91.69%;
-  opacity: .3;
+  opacity: .05;
   transform: rotate(0deg);
-  transition: .75s;
+}
+.rotating {
+  animation-name: rotating; 
+  animation-duration: 300s; 
+  animation-timing-function: linear;
+  animation-delay: 0; 
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  transform: scale(2);
 }
 
-#windStop img.zoom {
-  height: 200%;
-  transition: 2s !important;
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg)
+  }
+  25% {
+    transform: rotate(90deg)
+  }
+  50% {
+    transform: rotate(180deg)
+  }
+  75% {
+    transform: rotate(270deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
 }

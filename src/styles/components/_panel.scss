@@ -4,5 +4,14 @@
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  // z-index: 1;
+  display: flex;
+  transition: opacity .75s linear;
+}
+.panel.active {
+  opacity: 1;
+  z-index: 2;
+}
+.panel.inactive {
+  opacity: 0;
+  z-index: 1;
 }

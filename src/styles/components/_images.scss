@@ -1,0 +1,19 @@
+#founderImage {
+  height: 255px
+}
+#familyImage {
+  width: 755px;
+  height: 358px;
+}
+.values-hero {
+  width: 100%;
+  height: auto;
+}
+.parts-panel.active {
+  opacity: 1;
+  z-index: 2;
+}
+.parts-panel.inactive {
+  opacity: 0;
+  z-index: 1;
+}

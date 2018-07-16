@@ -1,0 +1,70 @@
+button:focus {
+  outline: none;
+}
+.scroll-button {
+  background: none;
+  border: none;
+  bottom: 10%;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+}
+.button--link {
+  background-color: transparent;
+  border: 1px solid #bfd7ea;
+  height: 40px;
+  transition: 0.25s;
+  width: 220px;
+  color: $white;
+}
+.button--link a {
+  align-items: center;
+  color: $white;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  text-decoration: none;
+}
+.button--link:hover a {
+  color: #0b3954;
+}
+.button--parts {
+  background-color: transparent;
+  border: 1px solid #bfd7ea;
+  color: $white;
+  height: 40px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
+.button--parts:hover {
+  background-color: $white;
+  border: 1px solid #0b3954;
+  color: #0b3954;
+}
+.button--parts.active {
+  background-color: #fad150;
+  border: 1px solid #0b3954; 
+  color: #0b3954;
+  font-family: Metropolis;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 22px;
+  text-align: center;
+}
+.button--parts-panel {
+  position: absolute;
+}
+#BarrelButton {
+  right: 0;
+  top: 0;
+}
+#FrameButton {
+  right: 5%;
+  bottom: 0;
+}
+#SlideButton {
+  left: 0
+}

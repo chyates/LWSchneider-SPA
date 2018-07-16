@@ -20,3 +20,10 @@ nav a:hover {
 .is-active {
   color: $link-yellow !important;
 }
+.is-active::before {
+  content: url('/images/scope-hovericon.svg');
+  margin-right: 15px;
+}
+#careersLink.is-active::before {
+  content: none;
+}
