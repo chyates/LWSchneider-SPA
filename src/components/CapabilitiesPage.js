@@ -7,13 +7,15 @@ import CapabilitesPageListings from './CapabiltiesPageListings';
 import Panel from './Panel';
 import PanelTitle from './PanelTitle';
 import PanelText from './PanelText';
-import PartsPanel from './PartsPanel';
-import PartsNav from './PartsNav';
+import HandgunPartsPanel from './HandgunPartsPanel';
+import RiflePartsPanel from './RiflePartsPanel';
 
 export default class CapabilitiesPage extends React.Component {
   state = {
     assets: [],
-    panelIndex: 0
+    panelIndex: 0,
+    activePartsPanel: 0,
+    activeButton: 0
   }
   componentDidMount() {
     fetch('http://lws.impactpreview.com/wp-json/wp/v2/pages/133')
@@ -42,6 +44,17 @@ export default class CapabilitiesPage extends React.Component {
       }));
     }
   };
+  handleChangePartsPanels = () => {
+    this.state.activePartsPanel === 0
+      ? this.setState({
+        activePartsPanel: 1,
+        activeButton: 1
+      })
+      : this.setState({
+        activePartsPanel: 0,
+        activeButton: 0
+      });
+  }
   render() {
     const assets = this.state.assets;
     const panelIndex = this.state.panelIndex;
@@ -65,34 +78,41 @@ export default class CapabilitiesPage extends React.Component {
             <div className="row no-gutters justify-content-center">
               <p>Click Below to Explore</p>
             </div>
-            <PartsNav />
-            <PartsPanel
-              handgunsGroup={asset.handguns_group}
-              sportingRiflesGroup={asset.sporting_rifles_group}
-            />
-            {/* <div className="row no-gutters justify-content-center">
-              <p>Click Below to Explore</p>
-            </div>
-            <div className="row no-gutters justify-content-center py-5">
-              <div className="col-8 position-relative">
-                <div className="row no-gutters justify-content-center">
-                  <img
-                    className="parts-image invisible"
-                    src={asset.handguns_group[0]['part_image']}
-                    alt="parts"
-                  />
-                  {asset.handguns_group &&
-                    asset.handguns_group.map((image, i) => (
-                      <img
-                        className="parts-image position-absolute"
-                        src={image.part_image}
-                        alt="parts"
-                        key={i}
-                      />
-                    ))}
+            <div className="row no-gutters justify-content-center">
+              <div className="col-4">
+                <div className="row no-gutters justify-content-between">
+                  <button
+                    className={
+                      this.state.activeButton === 0 ?
+                        "button--parts active" :
+                        "button--parts"
+                    }
+                    onClick={this.handleChangePartsPanels}
+                  >
+                    Handguns
+                  </button>
+                  <button
+                    className={
+                      this.state.activeButton === 1 ?
+                        "button--parts active" :
+                        "button--parts"
+                    }
+                    onClick={this.handleChangePartsPanels}
+                  >
+                    Modern Sporting Rifles
+                  </button>
                 </div>
               </div>
-            </div> */}
+            </div>
+            {this.state.activePartsPanel === 0 ? 
+              <HandgunPartsPanel
+                handgunsGroup={asset.handguns_group}
+              />
+              : 
+              <RiflePartsPanel
+                sportingRiflesGroup={asset.sporting_rifles_group}
+              />
+            }
           </div>
         )}
         {/* For Gallery Panel */}

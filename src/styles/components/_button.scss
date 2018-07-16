@@ -19,6 +19,11 @@ button:focus {
   width: 220px;
   color: $white;
 }
+.button--link:hover {
+  background-color: $white;
+  border: 1px solid #0b3954;
+  color: #0b3954;
+}
 .button--link a {
   align-items: center;
   color: $white;
@@ -55,7 +60,7 @@ button:focus {
   text-align: center;
 }
 .button--parts-panel {
-  position: absolute;
+  z-index: 10;
 }
 #BarrelButton {
   right: 0;

@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-
+import PartCallouts from './PartCallouts';
 export default class PartsPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
       panelIndex: 0,
-      partsIndex: "Main"
-    }
+      partsIndex: 'Main'
+    };
   }
-  handleTogglePartsImage = () => {
-    console.log('click')
-  }
+  handleTogglePartsImage = e => {
+    this.setState({
+      partsIndex: e.target.value
+    });
+  };
   render() {
     const partsIndex = this.state.partsIndex;
-    console.log(this.props.handgunsGroup);
-    // console.log(this.props.sportingRiflesGroup);
+    // console.log(this.props.handgunsGroup);
+    console.log(this.props.sportingRiflesGroup);
     const handgunsGroup = this.props.handgunsGroup;
+    const riflesGroup = this.props.sportingRiflesGroup;
     const handgunPanels = handgunsGroup.map((image, i) => (
-      <div
-        className="col-10 position-absolute"
-      >
+      <div className="col-10 position-absolute" key={image.part_label}>
         <div className="row no-gutters justify-content-center">
           <img
             className={
@@ -31,18 +32,34 @@ export default class PartsPanel extends Component {
             alt="parts"
             key={image.part_label}
           />
-          {image.part_label !== "Main" &&
-            <div className="col-3">
-              <div className="row no-gutters justify-content-center">
+          {image.part_label !== 'Main' && (
+            <div
+              id={image.part_label.replace(/ /g, '') + 'Div'}
+              className="col-3 position-absolute"
+              key={image.part_label + 'div'}
+            >
+              <div className="row no-gutters">
                 <button
-                  id={image.part_label + "Button"}
                   className="button--parts-panel"
+                  id={image.part_label.replace(/ /g, '') + 'Button'}
+                  onClick={this.handleTogglePartsImage}
+                  value={image.part_label}
                 >
                   {image.part_label}
                 </button>
               </div>
+              <div className="row no-gutters">
+                <PartCallouts
+                  callouts={image.part_callouts && image.part_callouts}
+                  style={
+                    partsIndex == image.part_label
+                      ? { visibility: 'visible' }
+                      : { visibility: 'hidden' }
+                  }
+                />
+              </div>
             </div>
-          }
+          )}
         </div>
       </div>
     ));
@@ -59,6 +76,6 @@ export default class PartsPanel extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
-};
+}
