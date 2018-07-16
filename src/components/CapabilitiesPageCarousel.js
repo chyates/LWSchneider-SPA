@@ -4,32 +4,48 @@ export default class CapabilitiesPageCarousel extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      activeIndex: 0,
+      frontItem: 0,
       startItem: 1,
       position: 0,
+      rightItem: 1,
+      leftItem: this.props.galleryImages.length -1,
       itemCount: this.props.galleryImages.length
     };
     this.handleSwap = this.handleSwap.bind(this);
   }
   handleSwap() {
-    const { activeIndex, startItem } = this.state;
+
+    let { leftItem, frontItem, rightItem, itemCount } = this.state;
+    console.log("LEFT:", leftItem, " FRONT:", frontItem, " RIGHT:", rightItem);
     this.setState({
-      activeIndex: activeIndex + 1,
-      startItem: startItem + 1
+      rightItem: rightItem +1,
+      frontItem: frontItem + 1,
+      leftItem: leftItem + 1
     });
+    if(rightItem == itemCount - 1 ){
+      this.setState({rightItem: 0});
+    };
+    if(frontItem == itemCount - 1){
+      this.setState({frontItem: 0});
+    };
+    if(leftItem == itemCount - 1){
+      this.setState({leftItem: 0});
+    };
+
   };
   render() {
-    const { activeIndex, itemCount, startItem } = this.state;
+
+    const { leftItem, frontItem, rightItem } = this.state;
     const images = this.props.galleryImages;
     const slides = images.map((image, i) => {
       return (
         <div 
           className={
-            (i === activeIndex) ? 
+            (i === frontItem) ? 
             "items front" : 
-            (i === itemCount - startItem) ? 
+            (i === leftItem) ? 
             "items left" : 
-            (i === activeIndex + 1) ? 
+            (i === rightItem) ? 
             "items right" : 
             "items back"
           }
@@ -39,6 +55,7 @@ export default class CapabilitiesPageCarousel extends Component {
           <img src={image.gallery_image} alt="" />
         </div>
       );
+
     })
     return (
       <div 
