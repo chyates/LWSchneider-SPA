@@ -6,6 +6,7 @@ import PanelTitle from './PanelTitle';
 import PanelText from './PanelText';
 import ScrollButton from './ScrollButton';
 import ValuesPageHero from './ValuesPageHero';
+import ValuesPageVideo from './ValuesPageVideo';
 
 export default class componentName extends Component {
   state = {
@@ -41,7 +42,6 @@ export default class componentName extends Component {
   };
   render() {
     const assets = this.state.assets;
-    console.log(assets);
     const panelIndex = this.state.panelIndex;
     const panels = assets.map((asset, i) => (
       <Panel
@@ -51,21 +51,44 @@ export default class componentName extends Component {
         {i === 0 && (
           <div>
             <ValuesPageHero imageSrc={asset.panel_image} />
-            <PanelTitle panelTitle={asset.panel_title} />
-            <PanelText panelText={asset.panel_text} />
+            <PanelTitle 
+              colSpan={{
+                xl: 8,
+                lg: 10,
+                md: 10
+              }}
+              panelTitle={asset.panel_title} 
+            />
+            <PanelText
+              colSpan={6} 
+              panelText={asset.panel_text} 
+            />
           </div>
         )}
         {i === 1 && (
           <div>
-            <PanelTitle panelTitle={asset.panel_title} />
-            <ValuesPageHero imageSrc={asset.panel_video} />
+            <PanelTitle 
+              colSpan={{
+                xl: 6,
+                lg: 8,
+                md: 10
+              }}
+              panelTitle={asset.panel_title} 
+            />
+            <ValuesPageVideo videoSrc={asset.panel_video} />
           </div>
         )}
         {i === 2 && (
           <div>
             <ValuesPageHero imageSrc={asset.panel_image} />
             <PanelTitle panelTitle={asset.panel_title} />
-            <PanelText panelText={asset.panel_text} />
+            <PanelText
+              colSpan={{
+                xl: 4,
+                lg: 6,
+              }} 
+              panelText={asset.panel_text} 
+            />
           </div>
         )}
         {i === 3 && (

@@ -1,0 +1,30 @@
+.carousel-item {
+  max-height: 339px;
+  height: auto;
+  width: auto;
+}
+.carousel-item {
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+.carousel-indicators {
+  bottom: -40px;
+  li {
+    position: relative;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: rgba(250, 209, 80, 0.5);
+    border-radius: 10px;
+  }
+  .active {
+    background-color: #fad150;
+  }
+}

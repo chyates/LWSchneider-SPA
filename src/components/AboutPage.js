@@ -5,6 +5,7 @@ import FounderImage from './FounderImage';
 import Panel from './Panel';
 import PanelTitle from './PanelTitle';
 import PanelText from './PanelText';
+import AboutPageCarousel from './AboutPageCarousel';
 
 export default class AboutPage extends Component {
   state = {
@@ -43,48 +44,74 @@ export default class AboutPage extends Component {
     const panelIndex = this.state.panelIndex;
     const panels = assets.map((asset, i) => (
       <Panel
-        className={
-          panelIndex == i
-            ? 'panel active'
-            : 'panel inactive'
-        }
+        className={panelIndex == i ? 'panel active' : 'panel inactive'}
         key={i + 1}
       >
         {/* Home Panel - Broken out for layout purposes */}
         {i == 0 && (
           <div>
             <FounderImage imgSrc={asset.panel_image} />
-            <PanelTitle 
+            <PanelTitle
               panelTitle={asset.panel_title}
-              colSpan={5} 
+              colSpan={{
+                lg: 6
+              }}
             />
-            <PanelText panelText={asset.panel_text} />
+            <PanelText
+              colSpan={{
+                lg: 6
+              }}
+              panelText={asset.panel_text}
+            />
           </div>
         )}
         {/* Panel 2 - Broken out for layout purposes */}
         {i === 1 && (
           <div>
-            <PanelTitle
-              panelTitle={asset.panel_title}
-              colSpan={4}
+            <PanelTitle 
+              colSpan={{
+                xl: 5,
+                lg: 6
+              }} 
+              panelTitle={asset.panel_title} 
             />
             <div className="row no-gutters justify-content-center">
-              <img id="familyImage" src={asset.panel_image} alt="image"/>
+              <div className="col-8">
+                <div className="row no-gutters justify-content-center">
+                  <img id="familyImage" src={asset.panel_image} alt="image" />
+                </div>
+              </div>
             </div>
             <div className="row no-gutters justify-content-center">
-              <ul>
-                <div className="col-6">
-                  {asset.panel_bullets.map((item, i) => (
-                    <li key={item.list_items}>{item.list_items}</li>
-                  ))}
+              <div className="col-8">
+                <div className="row no-gutters">
+                  <div className="col-6">
+                    <ul>
+                        {asset.panel_bullets_col_1.map((item, i) => (
+                          <li key={item.list_items}>{item.list_items}</li>
+                        ))}
+                    </ul>
+                  </div>
+                  <div className="col-6">
+                    <ul>
+                        {asset.panel_bullets_col_2.map((item, i) => (
+                          <li key={item.list_items}>{item.list_items}</li>
+                        ))}
+                    </ul>
+                  </div>
                 </div>
-              </ul>
+              </div>
             </div>
           </div>
         )}
         {/* Panel 3 - Broken out for layout purposes */}
-        {i === 2 && <PanelTitle panelTitle={asset.panel_title} />}
-        {i === 2 && <PanelText panelText={asset.panel_text} />}
+        {i === 2 && (
+          <div>
+            <AboutPageCarousel images={asset.panel_images_for_carousel} />
+            <PanelTitle panelTitle={asset.panel_title} />
+            <PanelText panelText={asset.panel_text} />
+          </div>
+        )}
       </Panel>
     ));
     return (

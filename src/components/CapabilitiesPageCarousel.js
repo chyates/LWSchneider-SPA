@@ -14,7 +14,6 @@ export default class CapabilitiesPageCarousel extends Component {
     this.handleSwap = this.handleSwap.bind(this);
   }
   handleSwap() {
-
     let { leftItem, frontItem, rightItem, itemCount } = this.state;
     console.log("LEFT:", leftItem, " FRONT:", frontItem, " RIGHT:", rightItem);
     this.setState({
@@ -31,10 +30,8 @@ export default class CapabilitiesPageCarousel extends Component {
     if(leftItem == itemCount - 1){
       this.setState({leftItem: 0});
     };
-
   };
   render() {
-
     const { leftItem, frontItem, rightItem } = this.state;
     const images = this.props.galleryImages;
     const slides = images.map((image, i) => {
@@ -51,12 +48,12 @@ export default class CapabilitiesPageCarousel extends Component {
           }
           key={i}
           onTouchEnd={this.handleSwap}
+          onClick={this.handleSwap}
         >
           <img src={image.gallery_image} alt="" />
         </div>
       );
-
-    })
+    });
     return (
       <div 
         className="row no-gutters justify-content-center"

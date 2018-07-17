@@ -8,9 +8,11 @@ body {
   position: absolute;
   left: 45px;
   top: 20px;
+  max-width: 336px;
+  width: 20vw;
 }
 .page {
-  height: 100vw;
+  height: 90vw;
 }
 .container-fluid {
   padding: 0;

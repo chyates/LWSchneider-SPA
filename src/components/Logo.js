@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Logo = (props) => (
-  <div id="logo">
+const Logo = props => (
+  <div>
     <Link to="/">
-      <img src={props.imageUrl} alt="logo"/>
+      <img id="logo" src={props.imageUrl} alt="logo" />
     </Link>
   </div>
-)
-export default Logo
+);
+export default Logo;

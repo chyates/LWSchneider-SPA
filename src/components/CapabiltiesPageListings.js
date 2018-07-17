@@ -12,21 +12,27 @@ export default class CapabilitiesPageListings extends React.Component {
         key={i + 1}
         className="col"
       >
-        <h1>{listing.listings_title}</h1>
-        <ul>
-          {listing.list_items.map((item, i) => (
-            <li
-              key={i + 1}
-            >
-              {item.list_item}
-            </li>
-          ))}
-        </ul>
+        <div className="row no-gutters justify-content-center">
+          <h1>{listing.listings_title}</h1>
+            <ul>
+              {listing.list_items.map((item, i) => (
+                <li
+                  key={i + 1}
+                >
+                  {item.list_item}
+                </li>
+              ))}
+            </ul>
+        </div>
       </div>
     ))
   return (
     <div className="row no-gutters justify-content-center">
-      {listings}
+      <div className="col-8">
+        <div className="row no-gutter justify-content-center">
+          {listings}
+        </div>
+      </div>
     </div>
     )
   }

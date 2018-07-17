@@ -16,14 +16,14 @@ export default class CapabilitiesPage extends React.Component {
     panelIndex: 0,
     activePartsPanel: 0,
     activeButton: 0
-  }
+  };
   componentDidMount() {
     fetch('http://lws.impactpreview.com/wp-json/wp/v2/pages/133')
       .then(res => res.json())
       .then(
         result => {
-          console.log(result)
-          const baseResult = result.acf['capabilities_panel_group']
+          console.log(result);
+          const baseResult = result.acf['capabilities_panel_group'];
           this.setState({
             assets: Object.values(baseResult)
           });
@@ -47,14 +47,14 @@ export default class CapabilitiesPage extends React.Component {
   handleChangePartsPanels = () => {
     this.state.activePartsPanel === 0
       ? this.setState({
-        activePartsPanel: 1,
-        activeButton: 1
-      })
+          activePartsPanel: 1,
+          activeButton: 1
+        })
       : this.setState({
-        activePartsPanel: 0,
-        activeButton: 0
-      });
-  }
+          activePartsPanel: 0,
+          activeButton: 0
+        });
+  };
   render() {
     const assets = this.state.assets;
     const panelIndex = this.state.panelIndex;
@@ -71,7 +71,7 @@ export default class CapabilitiesPage extends React.Component {
             <PanelText panelText={asset.panel_text} />
           </div>
         )}
-        {/* Part Panel */}
+        {/* Parts Panel */}
         {i === 1 && (
           <div>
             <PanelTitle panelTitle={asset.panel_title} colSpan={6} />
@@ -83,9 +83,9 @@ export default class CapabilitiesPage extends React.Component {
                 <div className="row no-gutters justify-content-between">
                   <button
                     className={
-                      this.state.activeButton === 0 ?
-                        "button--parts active" :
-                        "button--parts"
+                      this.state.activeButton === 0
+                        ? 'button--parts active'
+                        : 'button--parts'
                     }
                     onClick={this.handleChangePartsPanels}
                   >
@@ -93,9 +93,9 @@ export default class CapabilitiesPage extends React.Component {
                   </button>
                   <button
                     className={
-                      this.state.activeButton === 1 ?
-                        "button--parts active" :
-                        "button--parts"
+                      this.state.activeButton === 1
+                        ? 'button--parts active'
+                        : 'button--parts'
                     }
                     onClick={this.handleChangePartsPanels}
                   >
@@ -104,30 +104,25 @@ export default class CapabilitiesPage extends React.Component {
                 </div>
               </div>
             </div>
-            {this.state.activePartsPanel === 0 ? 
-              <HandgunPartsPanel
-                handgunsGroup={asset.handguns_group}
-              />
-              : 
+            {this.state.activePartsPanel === 0 ? (
+              <HandgunPartsPanel handgunsGroup={asset.handguns_group} />
+            ) : (
               <RiflePartsPanel
                 sportingRiflesGroup={asset.sporting_rifles_group}
               />
-            }
+            )}
           </div>
         )}
         {/* For Gallery Panel */}
         {i === 2 && (
           <div>
             <PanelTitle panelTitle={asset.panel_title} />
-            <CapabilitiesPageCarousel
-              galleryImages={asset.gallery_images}
-            />
+            <CapabilitiesPageCarousel galleryImages={asset.gallery_images} />
             <PanelText panelText={asset.panel_text} />
           </div>
         )}
         {i === 3 && (
           <div>
-            <PanelTitle panelTitle={asset.panel_title} />
             <CapabilitesPageListings
               pageListing={asset.capabilities_listings}
             />
@@ -136,15 +131,12 @@ export default class CapabilitiesPage extends React.Component {
       </Panel>
     ));
     return (
-      <div
-        className="page"
-        onWheel={_.debounce(this.handleChangePanels, 100)}
-      >
+      <div className="page" onWheel={_.debounce(this.handleChangePanels, 100)}>
         {panels}
         <button className="scroll-button" onClick={this.handleChangePanels}>
           <img src="/images/scroll-arrow.svg" alt="" />
         </button>
       </div>
-    )
+    );
   }
 }

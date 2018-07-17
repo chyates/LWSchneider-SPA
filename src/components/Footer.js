@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Footer = () => (
-  <div id="footer" className="row justify-content-center">
+  <div id="footer" className="row no-gutters justify-content-center">
     <div className="col-11">
       <div className="row no-gutters">
         <div className="col-6">

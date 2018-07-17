@@ -2,8 +2,10 @@
   height: 255px
 }
 #familyImage {
-  width: 755px;
-  height: 358px;
+  max-width: 755px;
+  max-height: 358px;
+  width: auto;
+  height: 28vh
 }
 .values-hero {
   width: 100%;

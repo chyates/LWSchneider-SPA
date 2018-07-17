@@ -39,7 +39,11 @@ button:focus {
   background-color: transparent;
   border: 1px solid #bfd7ea;
   color: $white;
+  font-family: Metropolis;
+  font-size: 18px;
+  font-weight: 200;
   height: 40px;
+  line-height: 22px;
   padding: 0 20px;
   text-transform: uppercase;
   transition: 0.25s;
