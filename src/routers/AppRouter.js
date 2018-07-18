@@ -17,17 +17,17 @@ import CareersPage from '../components/CareersPage';
 const AppRouter = () => (
   <BrowserRouter>
     <div className="container-fluid">
-      <Logo imageUrl="/images/lws-logo.svg" />
+      <Logo imageUrl="https://lws.impactpreview.com/wp-content/uploads/2018/06/lws-logo.svg" />
       <Navigation />
-      <WindStop imageUrl="/images/windstop-overlay.svg" />
-        <Switch>
-          <Route path="/" component={HomePage} exact={true} />
-          <Route path="/capabilities" component={CapabilitiesPage} />
-          <Route path="/values" component={ValuesPage} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/careers" component={CareersPage} />
-        </Switch>
+      <WindStop imageUrl="https://lws.impactpreview.com/wp-content/uploads/2018/06/windstop-overlay.svg" />
+      <Switch>
+        <Route path="/" component={HomePage} exact={true} />
+        <Route path="/capabilities" component={CapabilitiesPage} />
+        <Route path="/values" component={ValuesPage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/contact" component={ContactPage} />
+        <Route path="/careers" component={CareersPage} />
+      </Switch>
       <Footer />
     </div>
   </BrowserRouter>

@@ -8,6 +8,7 @@ import PanelLink from './PanelLink';
 import PanelText from './PanelText';
 import PanelTitle from './PanelTitle';
 import ScrollButton from './ScrollButton';
+import HomePageCarousel from './HomePageCarousel';
 
 export default class HomePage extends React.Component {
   state = {
@@ -17,7 +18,7 @@ export default class HomePage extends React.Component {
     panelIndex: 0,
   };
   componentDidMount() {
-    fetch('http://lws.impactpreview.com/wp-json/wp/v2/pages/120')
+    fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/120')
       .then(res => res.json())
       .then(
         result => {
@@ -57,12 +58,16 @@ export default class HomePage extends React.Component {
         style={{ backgroundImage: `url(${asset.panel_image})` }}
       >
         <PanelTitle 
+          colSpan={i === 3 ? 6 : 4}
           panelTitle={asset.panel_title}
-          colSpan={4}
+          titleId={`homePanel${i}`}
         />
+        {asset.carousel_images && (
+          <HomePageCarousel images={asset.carousel_images} />
+        )}
         <PanelText 
-          panelText={asset.panel_text}
           colSpan={4} 
+          panelText={asset.panel_text}
         />
         {/* if panel has link to another page */}
         {asset.link_out.button_text && (

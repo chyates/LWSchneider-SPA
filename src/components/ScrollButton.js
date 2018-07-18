@@ -1,9 +1,11 @@
 import React from 'react';
 
 const ScrollButton = props => (
-  <button className="scroll-button" onClick={props.handleChangePanels} >
-    <img src="/images/scroll-arrow.svg" alt="" />
-  </button>
+  <div>
+    <button className="scroll-button" onClick={props.handleChangePanels} >
+      <img src="/images/scroll-arrow.svg" alt="" />
+    </button>
+  </div>
 );
 
 export default ScrollButton;

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PanelText = (props) => {
-  console.log(typeof(props.colSpan))
   let colClasses = [];
   if (props.colSpan === undefined) {
     colClasses = undefined;
@@ -20,7 +19,6 @@ const PanelText = (props) => {
       ]
     } 
   }
-  console.log(colClasses)
   return (
     <div className="row no-gutters justify-content-center">
       <div 

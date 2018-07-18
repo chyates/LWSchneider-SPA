@@ -26,7 +26,12 @@ const PanelTitle = (props) => {
           colClasses ? colClasses.join(' ') : "col-4"
         }
       >
-        <h1 className="panel-title">{props.panelTitle}</h1>
+        <h1
+          id={props.titleId}
+          className="panel-title"
+        >
+          {props.panelTitle}
+        </h1>
       </div>
     </div>
   )

@@ -1,11 +1,11 @@
 #founderImage {
-  height: 255px
+  height: 255px;
 }
 #familyImage {
   max-width: 755px;
   max-height: 358px;
   width: auto;
-  height: 28vh
+  height: 28vh;
 }
 .values-hero {
   width: 100%;
@@ -18,4 +18,40 @@
 .parts-panel.inactive {
   opacity: 0;
   z-index: 1;
+}
+.slide-show-img-container {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 80px;
+  width: 200px;
+}
+.home-slider-image {
+  max-width: auto;
+  height: auto;
+}
+.slideshow {
+  width: auto;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  height: 200px;
+  width: 100%;
+  max-width: 500px;
+}
+.slideshow-row {
+  animation: moveSlideshow 30s linear infinite;
+  height: 200px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translate3d(0, 0, 0);
+  width: 1800px;
+}
+@keyframes moveSlideshow {
+  100% { 
+    transform: translateX(-66.6666%);  
+  }
 }

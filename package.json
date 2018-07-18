@@ -1,6 +1,7 @@
 {
   "name": "lw-schneider",
   "version": "1.0.0",
+  "homepage": "http://lws.impactpreview.com",
   "main": "index.js",
   "author": "Ozzy Gonzalez",
   "license": "MIT",

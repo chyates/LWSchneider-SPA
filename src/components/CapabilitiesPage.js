@@ -18,7 +18,7 @@ export default class CapabilitiesPage extends React.Component {
     activeButton: 0
   };
   componentDidMount() {
-    fetch('http://lws.impactpreview.com/wp-json/wp/v2/pages/133')
+    fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/133')
       .then(res => res.json())
       .then(
         result => {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 //Component Imports
 import Panel from './Panel';
@@ -13,7 +14,7 @@ export default class ContactPage extends Component {
     panelImage: ''
   }
   componentDidMount() {
-    fetch('http://lws.impactpreview.com/wp-json/wp/v2/pages/167')
+    fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/167')
       .then(res => res.json())
       .then(
         result => {
@@ -37,7 +38,8 @@ export default class ContactPage extends Component {
           className="panel"
           style={{ backgroundImage: `url(${this.state.panelImage})` }}
         >
-          <PanelTitle 
+          <PanelTitle
+            colSpan={3} 
             panelTitle={this.state.panelTitle}
           />
           <PanelText
@@ -48,7 +50,7 @@ export default class ContactPage extends Component {
             <p>Want to join our proud team of collaborators?</p>
           </div>
           <div className="row no-gutters justify-content-center">
-            <a href="#">See open positions</a>
+            <Link className="careers-link" to="/careers">See open positions</Link>
           </div>
         </Panel>
       </div>

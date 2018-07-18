@@ -13,8 +13,10 @@ export default class CapabilitiesPageListings extends React.Component {
         className="col"
       >
         <div className="row no-gutters justify-content-center">
-          <h1>{listing.listings_title}</h1>
-            <ul>
+          <h1
+            className="capabilities-listing-header"
+          >{listing.listings_title}</h1>
+            <ul className="capabilities-list">
               {listing.list_items.map((item, i) => (
                 <li
                   key={i + 1}
@@ -28,7 +30,7 @@ export default class CapabilitiesPageListings extends React.Component {
     ))
   return (
     <div className="row no-gutters justify-content-center">
-      <div className="col-8">
+      <div className="col-7">
         <div className="row no-gutter justify-content-center">
           {listings}
         </div>

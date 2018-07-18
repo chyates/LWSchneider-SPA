@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 //Component Imports
 import FounderImage from './FounderImage';
@@ -13,7 +14,7 @@ export default class AboutPage extends Component {
     panelIndex: 0
   }
   componentDidMount() {
-    fetch('http://lws.impactpreview.com/wp-json/wp/v2/pages/174')
+    fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/174')
       .then(res => res.json())
       .then(
         result => {
@@ -115,7 +116,7 @@ export default class AboutPage extends Component {
       </Panel>
     ));
     return (
-      <div className="page">
+      <div className="page" onWheel={_.debounce(this.handleChangePanels, 100)}>
         {panels}
         <button className="scroll-button" onClick={this.handleChangePanels}>
           <img src="/images/scroll-arrow.svg" alt="" />
