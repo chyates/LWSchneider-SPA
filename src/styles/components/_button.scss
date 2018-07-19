@@ -55,7 +55,7 @@ button:focus {
 }
 .button--parts.active {
   background-color: #fad150;
-  border: 1px solid #0b3954; 
+  border: 1px solid #0b3954;
   color: #0b3954;
   font-family: Metropolis;
   font-size: 18px;
@@ -64,7 +64,23 @@ button:focus {
   text-align: center;
 }
 .button--parts-panel {
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer; 
+  font-family: 'Metropolis';
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 22px;
+  text-align: center;
+  text-transform: uppercase;
   z-index: 10;
+  &:hover {
+    color: $link-yellow;
+  }
+  &.active {
+    color: $link-yellow;
+  }
 }
 #BarrelButton {
   right: 0;
@@ -75,5 +91,5 @@ button:focus {
   bottom: 0;
 }
 #SlideButton {
-  left: 0
+  left: 0;
 }

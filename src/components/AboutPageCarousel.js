@@ -43,19 +43,18 @@ export default class AboutPageCarousel extends Component {
   }
   render() {
     const { activeIndex } = this.state;
-    console.log(this.props.images)
     const slides = this.props.images.map((image, i) => (
       <CarouselItem
         onExiting={this.onExiting}
         onExited={this.onExited}
         key={image.carousel_image}
       >
-        <img src={image.carousel_image} alt="image" />
+        <img className="about-carousel-img" src={image.carousel_image} alt="image" />
       </CarouselItem>
     ));
     return (
       <div className="row no-gutters justify-content-center">
-        <div className="col-7">
+        <div className="col-6">
           <Carousel
             activeIndex={activeIndex}
             next={this.next}

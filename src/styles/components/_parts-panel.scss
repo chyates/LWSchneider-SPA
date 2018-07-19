@@ -1,5 +1,5 @@
 div#SlideDiv {
-  left: 0;
+  left: 15%;
   top: 5%;
 }
 div#FrameDiv {
@@ -11,11 +11,11 @@ div#BarrelDiv {
   right: 0;
 }
 div#ButtStockAssemblyDiv {
-  left: 0;
+  left: -10%;
 }
 div#FrontSightDiv {
-  right: 0;
-  top: 30%;
+  right: -5%;
+  top: 15%;
 }
 div#UpperReceiverDiv {
   right: 20%;
@@ -25,5 +25,15 @@ div#LowerReceiverDiv {
   bottom: 0;
 }
 div#BoltCarrierGroupDiv {
-  bottom: 0;
+  bottom: -30%;
+  right: 14%;
+}
+.parts-panel {
+  height: 35vh;
+}
+.parts-image.invisible {
+  height: 45vh;
+}
+.handgun {
+  height: 40vh;
 }

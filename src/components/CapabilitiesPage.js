@@ -9,6 +9,7 @@ import PanelTitle from './PanelTitle';
 import PanelText from './PanelText';
 import HandgunPartsPanel from './HandgunPartsPanel';
 import RiflePartsPanel from './RiflePartsPanel';
+import ScrollButton from './ScrollButton';
 
 export default class CapabilitiesPage extends React.Component {
   state = {
@@ -79,7 +80,7 @@ export default class CapabilitiesPage extends React.Component {
               <p>Click Below to Explore</p>
             </div>
             <div className="row no-gutters justify-content-center">
-              <div className="col-4">
+              <div className="col-6">
                 <div className="row no-gutters justify-content-between">
                   <button
                     className={
@@ -133,9 +134,7 @@ export default class CapabilitiesPage extends React.Component {
     return (
       <div className="page" onWheel={_.debounce(this.handleChangePanels, 100)}>
         {panels}
-        <button className="scroll-button" onClick={this.handleChangePanels}>
-          <img src="/images/scroll-arrow.svg" alt="" />
-        </button>
+        <ScrollButton handleChangePanels={this.handleChangePanels} />
       </div>
     );
   }

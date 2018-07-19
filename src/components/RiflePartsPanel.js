@@ -18,16 +18,13 @@ export default class PartsPanel extends Component {
     const partsIndex = this.state.partsIndex;
     const riflesGroup = this.props.sportingRiflesGroup;
     const riflePanels = riflesGroup.map((image, i) => (
-      <div 
-        className="col-10 position-absolute" 
-        key={image.part_label}
-      >
+      <div className="col-10 position-absolute" key={image.part_label}>
         <div className="row no-gutters justify-content-center">
           <img
             className={
               partsIndex == image.part_label
-                ? 'parts-panel active'
-                : 'parts-panel inactive'
+                ? 'rifle parts-panel active'
+                : 'rifle parts-panel inactive'
             }
             src={image.part_image}
             alt="parts"
@@ -41,7 +38,11 @@ export default class PartsPanel extends Component {
             >
               <div className="row no-gutters">
                 <button
-                  className="button--parts-panel"
+                  className={
+                    this.state.partsIndex === image.part_label
+                      ? 'button--parts-panel active'
+                      : 'button--parts-panel'
+                  }
                   id={image.part_label.replace(/ /g, '_') + 'Button'}
                   onClick={this.handleTogglePartsImage}
                   value={image.part_label}

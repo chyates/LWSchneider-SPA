@@ -25,8 +25,8 @@ export default class PartsPanel extends Component {
           <img
             className={
               partsIndex == image.part_label
-                ? 'parts-panel active'
-                : 'parts-panel inactive'
+                ? 'handgun parts-panel active'
+                : 'handgun parts-panel inactive'
             }
             src={image.part_image}
             alt="parts"
@@ -40,7 +40,11 @@ export default class PartsPanel extends Component {
             >
               <div className="row no-gutters">
                 <button
-                  className="button--parts-panel"
+                  className={
+                    this.state.partsIndex === image.part_label
+                      ? 'button--parts-panel active'
+                      : 'button--parts-panel'
+                  }
                   id={image.part_label.replace(/ /g, '') + 'Button'}
                   onClick={this.handleTogglePartsImage}
                   value={image.part_label}

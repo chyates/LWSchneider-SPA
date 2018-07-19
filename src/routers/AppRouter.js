@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 //Component Imports
 import Footer from '../components/Footer';
@@ -20,14 +21,18 @@ const AppRouter = () => (
       <Logo imageUrl="https://lws.impactpreview.com/wp-content/uploads/2018/06/lws-logo.svg" />
       <Navigation />
       <WindStop imageUrl="https://lws.impactpreview.com/wp-content/uploads/2018/06/windstop-overlay.svg" />
-      <Switch>
-        <Route path="/" component={HomePage} exact={true} />
-        <Route path="/capabilities" component={CapabilitiesPage} />
-        <Route path="/values" component={ValuesPage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/contact" component={ContactPage} />
-        <Route path="/careers" component={CareersPage} />
-      </Switch>
+      <TransitionGroup>
+        <CSSTransition key={location.key} classNames="fade" timeout={300}>
+          <Switch location={location} >
+            <Route path="/" component={HomePage} exact={true} />
+            <Route path="/capabilities" component={CapabilitiesPage} />
+            <Route path="/values" component={ValuesPage} />
+            <Route path="/about" component={AboutPage} />
+            <Route path="/contact" component={ContactPage} />
+            <Route path="/careers" component={CareersPage} />
+          </Switch>
+        </CSSTransition>  
+      </TransitionGroup>
       <Footer />
     </div>
   </BrowserRouter>
