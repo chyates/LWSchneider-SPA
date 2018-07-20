@@ -9,4 +9,18 @@ import './styles/styles.scss';
 
 import AppRouter from './routers/AppRouter';
 
-ReactDOM.render(<AppRouter />, document.getElementById('app'));
+import { combineReducers, createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import windstop from './reducers/windstop'; 
+
+const allReducers = combineReducers({
+  windstop: windstop
+})
+
+const store = createStore(
+  allReducers,
+  window.devToolsExtension && window.devToolsExtension()
+);
+
+ReactDOM.render(<Provider store={store} ><AppRouter /></Provider>, document.getElementById('app'));

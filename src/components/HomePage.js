@@ -1,5 +1,7 @@
-import React from 'react';
 import _ from 'lodash';
+import React from 'react';
+
+import { connect } from 'react-redux';
 
 //Component Imports
 import Panel from './Panel';
@@ -9,8 +11,10 @@ import PanelText from './PanelText';
 import PanelTitle from './PanelTitle';
 import ScrollButton from './ScrollButton';
 import HomePageCarousel from './HomePageCarousel';
+import WindStop from './WindStop';
+import { rotateOnce } from '../actions/windstop';
 
-export default class HomePage extends React.Component {
+class HomePage extends React.Component {
   state = {
     error: null,
     isLoaded: false,
@@ -22,7 +26,7 @@ export default class HomePage extends React.Component {
       .then(res => res.json())
       .then(
         result => {
-          console.log(result.acf['home_panel_repeater']);
+          console.log(result);
           this.setState({
             isLoaded: true,
             assets: result.acf['home_panel_repeater']
@@ -44,6 +48,9 @@ export default class HomePage extends React.Component {
       }));
     }
   };
+  handleRotateWindstop = () => {
+    this.props.dispatch(rotateOnce());
+  }
   render() {
     const assets = this.state.assets;
     const panelIndex = this.state.panelIndex;
@@ -82,10 +89,22 @@ export default class HomePage extends React.Component {
       </Panel>
     ));
     return (
-      <div className="page" onWheel={_.debounce(this.handleChangePanels, 100)}>
+      <div 
+        className="page" 
+        onWheel={() => (this.handleChangePanels(), this.handleRotateWindstop())}
+      >
         {panels}
-        <ScrollButton handleChangePanels={this.handleChangePanels} />
+        <ScrollButton 
+          handleRotateWindstop={this.handleRotateWindstop}  
+          handleChangePanels={this.handleChangePanels} 
+        />
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  windstop: state.windstop
+});
+
+export default connect(mapStateToProps)(HomePage);

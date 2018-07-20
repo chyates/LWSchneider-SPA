@@ -31,7 +31,6 @@ export default class ContactPage extends Component {
       );
   }
   render() {
-    console.log(this.state.panelText);
     return (
       <div className="page">
         <Panel

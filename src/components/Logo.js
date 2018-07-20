@@ -1,11 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { revertWindstop } from '../actions/windstop';
 
 const Logo = props => (
   <div>
-    <Link to="/">
+    <Link 
+      to="/"
+      onClick={() => (props.dispatch(revertWindstop()))}
+    >
       <img id="logo" src={props.imageUrl} alt="logo" />
     </Link>
   </div>
 );
-export default Logo;
+
+const mapStateToProps = state => ({
+  windstop: state.windstop
+});
+
+export default connect(mapStateToProps)(Logo);

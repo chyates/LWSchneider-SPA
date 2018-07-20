@@ -7,6 +7,7 @@ import Panel from './Panel';
 import PanelTitle from './PanelTitle';
 import PanelText from './PanelText';
 import AboutPageCarousel from './AboutPageCarousel';
+import ScrollButton from './ScrollButton';
 
 export default class AboutPage extends Component {
   state = {
@@ -124,9 +125,9 @@ export default class AboutPage extends Component {
     return (
       <div className="page" onWheel={_.debounce(this.handleChangePanels, 100)}>
         {panels}
-        <button className="scroll-button" onClick={this.handleChangePanels}>
-          <img src="/images/scroll-arrow.svg" alt="" />
-        </button>
+        <ScrollButton
+          onClick={this.handleRotateWindstop} handleChangePanels={this.handleChangePanels}
+        />
       </div>
     )
   }

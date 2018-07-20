@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { scaleWindstop } from '../actions/windstop';
 
 const Footer = () => (
   <div id="footer" className="row no-gutters justify-content-center">
@@ -27,7 +29,9 @@ const Footer = () => (
           <div className="row no-gutters justify-content-end">
             <NavLink
               id="careersLink"
-              to="/careers"
+              to={{
+                pathname: "/careers"
+              }}
               activeClassName="is-active"
               className="text-right"
             >
@@ -45,4 +49,8 @@ const Footer = () => (
   </div>
 );
 
-export default Footer;
+const mapStateToProps = (state) => ({
+  windstop: state.windstop
+});
+
+export default connect(mapStateToProps)(Footer);

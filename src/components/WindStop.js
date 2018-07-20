@@ -1,49 +1,45 @@
 import React from 'react';
+import windstop from '../reducers/windstop';
+import { connect } from 'react-redux';
 
-const styles = {
-  transition: 'all 1.25s ease',
-  
-};
 
-export default class WindStop extends React.Component {
+class WindStop extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      scale: 1,
+      height: '91.69vh',
       rotate: 0,
-      rotating: false
-    }
-    this.onScale = this.onScale.bind(this);
-    this.onRotateOnce = this.onRotateOnce.bind(this);
-    this.onContinuousRotate = this.onContinuousRotate.bind(this);
+      rotating: false,  
+    };
+    
   }
-  onRotateOnce() {
-    this.setState({
-      rotate: this.state.rotate + 15
-    });
-  };
-  onScale()  {
-    this.setState({
-      scale: this.state.scale > 1 ? 1 : 2,
-      // rotating: !this.state.rotating
-    });
-  };
-  onContinuousRotate() {
-    this.setState({
-      rotating: !this.state.rotating
-    });
-  };
+  componentWillReceiveProps(props) {
+    this.setState(props.windstop);
+  }
+
   render() {
+    const styles = {
+      transition: 'all 1.25s ease',
+      height: this.state.height,
+      transform: 'rotate(' + this.state.rotate + 'deg)'
+    };
     return (
       <div id="windStop">
         <img
           className={this.state.rotating ? 'rotating' : ''}
-          style={{ ...styles, transform: 'scale(' + this.state.scale + ') rotate(' + this.state.rotate + 'deg)' }}
+          style={{ ...styles}}
           src={this.props.imageUrl} 
-          alt=""
+          alt="turny-thing"
         />
       </div>
     )
   }
 };
+
+const mapStateToProps = (state) => ({
+  windstop: state.windstop
+});
+const mapDispatchToProps = {
+
+}
+export default connect(mapStateToProps, mapDispatchToProps)(WindStop);
