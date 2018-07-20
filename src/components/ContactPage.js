@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { scaleWindstop } from '../actions/windstop';
 
 //Component Imports
 import Panel from './Panel';
@@ -7,7 +9,7 @@ import PanelTitle from './PanelTitle';
 import PanelText from './PanelText';
 import PanelContact from './PanelContact';
 
-export default class ContactPage extends Component {
+class ContactPage extends Component {
   state = {
     panelTitle: '',
     panelText: '',
@@ -29,6 +31,7 @@ export default class ContactPage extends Component {
           console.log(error);
         }
       );
+    this.props.dispatch(scaleWindstop());
   }
   render() {
     return (
@@ -56,3 +59,9 @@ export default class ContactPage extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  windstop: state.windstop
+});
+
+export default connect(mapStateToProps)(ContactPage);

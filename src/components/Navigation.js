@@ -1,47 +1,67 @@
-import React from 'react';
+
+import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { scaleWindstop } from '../actions/windstop';
+import { Collapse, Nav, Navbar, NavItem, NavbarBrand, NavbarToggler } from 'reactstrap';
 
-const Navigation = props => (
-  <nav className="nav flex-column">
-    <NavLink
-      to="/capabilities"
-      className="nav-link"
-      activeClassName="is-active"
-      onClick={() => props.dispatch(scaleWindstop())}
-    >
-      Capabilities
-    </NavLink>
-    <NavLink
-      to="/values"
-      className="nav-link"
-      activeClassName="is-active"
-      onClick={() => props.dispatch(scaleWindstop())}
-    >
-      Values
-    </NavLink>
-    <NavLink
-      to="/about"
-      className="nav-link"
-      activeClassName="is-active"
-      onClick={() => props.dispatch(scaleWindstop())}
-    >
-      About
-    </NavLink>
-    <NavLink
-      to="/contact"
-      className="nav-link"
-      activeClassName="is-active"
-      onClick={() => props.dispatch(scaleWindstop())}
-    >
-      Contact
-    </NavLink>
-  </nav>
-);
-
-const mapStateToProps = (state) => ({
-  windstop: state.windstop
-});
-
-export default connect(mapStateToProps)(Navigation);
+export default class Navigation extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: true
+    }
+    this.toggle = this.toggle.bind(this)
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+  render() {
+    return (
+      <Navbar className="nav flex-column">
+        <NavbarBrand />
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav navbar>
+            <NavItem>
+              <NavLink
+                to="/capabilities"
+                className="nav-link"
+                activeClassName="is-active"
+              >
+                Capabilities
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                to="/values"
+                className="nav-link"
+                activeClassName="is-active"
+              >
+                Values
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                to="/about"
+                className="nav-link"
+                activeClassName="is-active"
+              >
+                About
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                to="/contact"
+                className="nav-link"
+                activeClassName="is-active"
+              >
+                Contact
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    )
+  }
+}

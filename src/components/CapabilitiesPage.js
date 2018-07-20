@@ -1,5 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
+import { connect } from 'react-redux';
+import { scaleWindstop } from '../actions/windstop';
 
 //Component Imports
 import CapabilitiesPageCarousel from './CapabilitiesPageCarousel';
@@ -11,7 +13,7 @@ import HandgunPartsPanel from './HandgunPartsPanel';
 import RiflePartsPanel from './RiflePartsPanel';
 import ScrollButton from './ScrollButton';
 
-export default class CapabilitiesPage extends React.Component {
+class CapabilitiesPage extends React.Component {
   state = {
     assets: [],
     panelIndex: 0,
@@ -33,6 +35,7 @@ export default class CapabilitiesPage extends React.Component {
           console.log(error);
         }
       );
+    this.props.dispatch(scaleWindstop());
   }
   handleChangePanels = () => {
     if (this.state.panelIndex < this.state.assets.length - 1) {
@@ -59,7 +62,6 @@ export default class CapabilitiesPage extends React.Component {
   render() {
     const assets = this.state.assets;
     const panelIndex = this.state.panelIndex;
-    console.log(assets);
     const panels = assets.map((asset, i) => (
       <Panel
         className={panelIndex == i ? 'panel active' : 'panel inactive'}
@@ -67,14 +69,14 @@ export default class CapabilitiesPage extends React.Component {
       >
         {/* Home Panel */}
         {i === 0 && (
-          <div>
+          <div className="content-wrapper">
             <PanelTitle panelTitle={asset.panel_title} />
             <PanelText panelText={asset.panel_text} />
           </div>
         )}
         {/* Parts Panel */}
         {i === 1 && (
-          <div>
+          <div className="content-wrapper">
             <PanelTitle panelTitle={asset.panel_title} colSpan={6} />
             <div className="row no-gutters justify-content-center">
               <p>Click Below to Explore</p>
@@ -116,14 +118,14 @@ export default class CapabilitiesPage extends React.Component {
         )}
         {/* For Gallery Panel */}
         {i === 2 && (
-          <div>
+          <div className="content-wrapper">
             <PanelTitle panelTitle={asset.panel_title} />
             <CapabilitiesPageCarousel galleryImages={asset.gallery_images} />
             <PanelText panelText={asset.panel_text} />
           </div>
         )}
         {i === 3 && (
-          <div>
+          <div className="content-wrapper">
             <CapabilitesPageListings
               pageListing={asset.capabilities_listings}
             />
@@ -139,3 +141,9 @@ export default class CapabilitiesPage extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  windstop: state.windstop
+});
+
+export default connect(mapStateToProps)(CapabilitiesPage);

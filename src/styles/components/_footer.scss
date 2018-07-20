@@ -9,3 +9,15 @@
   text-decoration: underline;
   color: $white;
 }
+.phone {
+  text-decoration: none !important;
+  :hover {
+    color: $link-yellow;
+  }
+}
+.address {
+  text-decoration: none !important;
+  :hover {
+    color: $link-yellow !important;
+  }
+}

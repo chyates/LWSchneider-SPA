@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import { connect } from 'react-redux';
+import { scaleWindstop } from '../actions/windstop';
 
 //Component Imports
 import FounderImage from './FounderImage';
@@ -9,7 +11,7 @@ import PanelText from './PanelText';
 import AboutPageCarousel from './AboutPageCarousel';
 import ScrollButton from './ScrollButton';
 
-export default class AboutPage extends Component {
+class AboutPage extends Component {
   state = {
     assets: [],
     panelIndex: 0
@@ -29,6 +31,7 @@ export default class AboutPage extends Component {
           console.log(error);
         }
       );
+    this.props.dispatch(scaleWindstop());
   }
   handleChangePanels = () => {
     if (this.state.panelIndex < this.state.assets.length - 1) {
@@ -133,3 +136,8 @@ export default class AboutPage extends Component {
   }
 };
 
+const mapStateToProps = (state) => ({
+  windstop: state.windstop
+});
+
+export default connect(mapStateToProps)(AboutPage);

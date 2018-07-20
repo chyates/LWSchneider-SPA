@@ -1,4 +1,4 @@
-nav {
+.navbar {
   position: absolute;
   top: 50%;
   right: 0;
@@ -21,7 +21,7 @@ nav a:hover {
   color: $link-yellow !important;
 }
 .is-active::before {
-  content: url('/images/scope-hovericon.svg');
+  content: url('https://lws.impactpreview.com/wp-content/uploads/2018/06/scope-hovericon.svg');
   margin-right: 15px;
   position: relative;
   top: 7px;

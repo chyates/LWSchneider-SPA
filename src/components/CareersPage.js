@@ -58,8 +58,9 @@ class CareersPage extends Component {
     return (
       <div className="page">
         <Panel className="panel">
-          <PanelTitle 
+          <PanelTitle
             panelTitle={this.state.panelTitle} 
+            titleId={"careersTitle"}
           />
           <PanelText 
             colSpan={4} 
@@ -121,7 +122,7 @@ class CareersPage extends Component {
                   <div 
                     className="row no-gutters"
                   >
-                    <img className="img-fluid" src={this.state.peopleImage} alt="people-link-image"/>
+                    <img className="people-link-image" src={this.state.peopleImage} alt="people-link-image"/>
                   </div>
                 </div>
               </div>

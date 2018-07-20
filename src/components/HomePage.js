@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
+import { isScrollingDown, isScrollingUp } from 'react-is-scrolling';
 
 import { connect } from 'react-redux';
 
@@ -11,8 +12,7 @@ import PanelText from './PanelText';
 import PanelTitle from './PanelTitle';
 import ScrollButton from './ScrollButton';
 import HomePageCarousel from './HomePageCarousel';
-import WindStop from './WindStop';
-import { rotateOnce } from '../actions/windstop';
+import { revertWindstop, rotateOnce } from '../actions/windstop';
 
 class HomePage extends React.Component {
   state = {
@@ -20,6 +20,8 @@ class HomePage extends React.Component {
     isLoaded: false,
     assets: [],
     panelIndex: 0,
+    buttonText: '',
+    lastScrollPos: 0
   };
   componentDidMount() {
     fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/120')
@@ -36,6 +38,10 @@ class HomePage extends React.Component {
           console.log(error);
         }
       );
+    this.props.dispatch(revertWindstop());
+    if (this.state.panelIndex === 0) {
+      this.state.buttonText = ("Scroll")
+    }
   }
   handleChangePanels = () => {
     if (this.state.panelIndex < this.state.assets.length - 1) {
@@ -51,6 +57,11 @@ class HomePage extends React.Component {
   handleRotateWindstop = () => {
     this.props.dispatch(rotateOnce());
   }
+  setButtonText(text) {
+    this.setState({
+      buttonText: text
+    })
+  }
   render() {
     const assets = this.state.assets;
     const panelIndex = this.state.panelIndex;
@@ -58,8 +69,8 @@ class HomePage extends React.Component {
       <Panel
         className={
           panelIndex == i
-            ? 'panel active'
-            : 'panel inactive'
+            ? 'homepage-panel active'
+            : 'homepage-panel inactive'
         }
         key={i + 1}
         style={{ backgroundImage: `url(${asset.panel_image})` }}
@@ -73,7 +84,7 @@ class HomePage extends React.Component {
           <HomePageCarousel images={asset.carousel_images} />
         )}
         <PanelText 
-          colSpan={4} 
+          colSpan={i === 5 ? 3 : 4} 
           panelText={asset.panel_text}
         />
         {/* if panel has link to another page */}
@@ -94,9 +105,12 @@ class HomePage extends React.Component {
         onWheel={() => (this.handleChangePanels(), this.handleRotateWindstop())}
       >
         {panels}
-        <ScrollButton 
+        <ScrollButton
+          buttonText={
+            (panels[this.state.panelIndex] === 0) ? "Scroll" : ''
+          }
           handleRotateWindstop={this.handleRotateWindstop}  
-          handleChangePanels={this.handleChangePanels} 
+          handleChangePanels={this.handleChangePanels}
         />
       </div>
     );

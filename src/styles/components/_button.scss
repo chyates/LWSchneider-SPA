@@ -11,6 +11,13 @@ button:focus {
   transform: translateX(-50%);
   z-index: 10000;
 }
+.scroll-text {
+  font-family: $Ashbury;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: center;
+}
 .button--link {
   background-color: transparent;
   border: 1px solid #bfd7ea;
@@ -39,7 +46,7 @@ button:focus {
   background-color: transparent;
   border: 1px solid #bfd7ea;
   color: $white;
-  font-family: Metropolis;
+  font-family: $Metropolis;
   font-size: 18px;
   font-weight: 200;
   height: 40px;
@@ -57,7 +64,7 @@ button:focus {
   background-color: #fad150;
   border: 1px solid #0b3954;
   color: #0b3954;
-  font-family: Metropolis;
+  font-family: $Metropolis;
   font-size: 18px;
   font-weight: 200;
   line-height: 22px;
@@ -67,12 +74,13 @@ button:focus {
   border: none;
   background-color: transparent;
   color: #ffffff;
-  cursor: pointer; 
-  font-family: 'Metropolis';
+  cursor: pointer;
+  font-family: $Metropolis;
   font-size: 18px;
   font-weight: 200;
   line-height: 22px;
   text-align: center;
+  text-decoration: underline;
   text-transform: uppercase;
   z-index: 10;
   &:hover {

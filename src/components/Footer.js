@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { scaleWindstop } from '../actions/windstop';
+
+import LinkedIn from './LinkedIn';
 
 const Footer = () => (
   <div id="footer" className="row no-gutters justify-content-center">
@@ -10,18 +10,24 @@ const Footer = () => (
         <div className="col-6">
           <div className="row no-gutters">
             <div className="col-4">
+              <a
+                className="address"
+                href="https://goo.gl/maps/i3cJNAnpTnM2"
+                target="_blank"
+              >
+                <div className="row no-gutters">1180 North Sixth Street</div>
+                <div className="row no-gutters">Princeton, IL 61356</div>
+              </a>
+            </div>
+            <div className="col-3 d-flex align-items-end">
               <div className="row no-gutters">
-                1180 North Sixth Street
-              </div>
-              <div className="row no-gutters">
-                Princeton, IL 61356
+                <a className="phone" href="tel:+815-875-3835">
+                  815-875-3835
+                </a>
               </div>
             </div>
-            <div className="col-auto"> 
-              815-875-3835
-            </div>
-            <div className="col-auto">
-              
+            <div className="col-auto d-flex align-items-center">
+              <LinkedIn />
             </div>
           </div>
         </div>
@@ -30,7 +36,7 @@ const Footer = () => (
             <NavLink
               id="careersLink"
               to={{
-                pathname: "/careers"
+                pathname: '/careers'
               }}
               activeClassName="is-active"
               className="text-right"
@@ -53,4 +59,4 @@ const mapStateToProps = (state) => ({
   windstop: state.windstop
 });
 
-export default connect(mapStateToProps)(Footer);
+export default (Footer);
