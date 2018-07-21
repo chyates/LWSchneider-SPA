@@ -15,7 +15,8 @@ class ValuesPage extends Component {
   state = {
     assets: [],
     panelIndex: 0,
-    didScroll: 0
+    didScroll: 0,
+    touchY: null
   }
   componentDidMount() {
     fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/165')
@@ -47,6 +48,17 @@ class ValuesPage extends Component {
     this.setState({
       didScroll: this.state.didScroll + e.deltaY
     })
+  }
+  handleTouchStart = e => {
+    this.setState({
+        touchY: e.changedTouches[0].clientY
+    })
+  }
+  handleTouchEnd = e => {
+    if (this.state.touchY) {
+      this.handleChangePanels(this.state.touchY - e.changedTouches[0].clientY)
+      this.setState({touchY: null})
+    }
   }
   handleChangePanels = direction => {
     if (direction > 0 && this.state.panelIndex < this.state.assets.length - 1) {
@@ -119,7 +131,12 @@ class ValuesPage extends Component {
     if (panelIndex === 0) buttonText = 'See Our Video'
     else if (panelIndex === 2) buttonText = 'In The News'
     return (
-      <div className="page" onWheel={this.handleScroll}>
+      <div 
+        className="page"
+        onWheel={this.handleScroll}
+        onTouchStart={this.handleTouchStart}
+        onTouchEnd={this.handleTouchEnd}
+      >
         {panels}
         {(panelIndex < assets.length - 1) ?
           <ScrollButton

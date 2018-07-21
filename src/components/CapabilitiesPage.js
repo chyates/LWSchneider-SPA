@@ -19,7 +19,8 @@ class CapabilitiesPage extends React.Component {
     panelIndex: 0,
     activePartsPanel: 0,
     activeButton: 0,
-    didScroll: 0
+    didScroll: 0,
+    touchY: null
   };
   componentDidMount() {
     fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/133')
@@ -51,6 +52,20 @@ class CapabilitiesPage extends React.Component {
     this.setState({
       didScroll: this.state.didScroll + e.deltaY
     })
+  }
+  handleTouchStart = e => {
+    console.log('touch start!', Object.assign({}, e))
+    this.setState({
+        // touchX: e.changedTouches[0].clientX,
+        touchY: e.changedTouches[0].clientY
+    })
+  }
+  handleTouchEnd = e => {
+    // console.log('touch end!', Object.assign({}, e))
+    if (this.state.touchY) {
+      this.handleChangePanels(this.state.touchY - e.changedTouches[0].clientY)
+      this.setState({touchY: null})
+    }
   }
   handleChangePanels = direction => {
     // console.log(direction)
@@ -154,7 +169,12 @@ class CapabilitiesPage extends React.Component {
     else if (panelIndex == 1) buttonText = 'See Gallery'
     else if (panelIndex == 2) buttonText = 'See Processes'
     return (
-      <div className="page" onWheel={this.handleScroll}>
+      <div
+        className="page"
+        onWheel={this.handleScroll}
+        onTouchStart={this.handleTouchStart}
+        onTouchEnd={this.handleTouchEnd}
+      >
         {panels}
         {(panelIndex < assets.length - 1) ?
           <ScrollButton

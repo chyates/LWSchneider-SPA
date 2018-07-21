@@ -21,7 +21,9 @@ class HomePage extends React.Component {
     assets: [],
     panelIndex: 0,
     buttonText: '',
-    lastScrollPos: 0
+    lastScrollPos: 0,
+    // touchX: null,
+    touchY: null
   };
   componentDidMount() {
     fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/120')
@@ -54,9 +56,28 @@ class HomePage extends React.Component {
     clearInterval(this.interval)
   }
   handleScroll = e => {
+    // console.log(Object.assign({}, e))
     this.setState({
-      didScroll: this.state.didScroll + e.deltaY
+      didScroll: this.state.didScroll + e.deltaY,
     })
+  }
+  handleTouchStart = e => {
+    // console.log('touch start!', Object.assign({}, e))
+    this.setState({
+        // touchX: e.changedTouches[0].clientX,
+        touchY: e.changedTouches[0].clientY
+    })
+  }
+  handleTouchEnd = e => {
+    // console.log('touch end!', Object.assign({}, e))
+    if (this.state.touchY) {
+      this.handleChangePanels(this.state.touchY - e.changedTouches[0].clientY)
+      this.handleRotateWindstop(this.state.touchY - e.changedTouches[0].clientY)
+      this.setState({
+        // touchX: null,
+        touchY: null
+      })
+    }
   }
   handleChangePanels = direction => {
     if (direction > 0 && this.state.panelIndex < this.state.assets.length - 1) {
@@ -118,6 +139,8 @@ class HomePage extends React.Component {
       <div 
         className="page" 
         onWheel={this.handleScroll}
+        onTouchStart={this.handleTouchStart}
+        onTouchEnd={this.handleTouchEnd}
       >
         {panels}
         {(panelIndex < assets.length - 1) ?

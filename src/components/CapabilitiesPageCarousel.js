@@ -9,10 +9,30 @@ export default class CapabilitiesPageCarousel extends Component {
       position: 0,
       rightItem: 1,
       leftItem: this.props.galleryImages.length - 1,
-      itemCount: this.props.galleryImages.length
+      itemCount: this.props.galleryImages.length,
+      touchX: null
     };
+    this.handleTouchStart = this.handleTouchStart.bind(this)
+    this.handleTouchEnd = this.handleTouchEnd.bind(this)
     this.handleSwapLeft = this.handleSwapLeft.bind(this);
     this.handleSwapRight = this.handleSwapRight.bind(this);
+  }
+  handleTouchStart(e) {
+    e.stopPropagation()
+    this.setState({
+      touchX: e.changedTouches[0].clientX
+    })
+  }
+  handleTouchEnd(e) {
+    e.stopPropagation()
+    if (this.state.touchX) {
+      if (this.state.touchX - e.changedTouches[0].clientX > 0) {
+        this.handleSwapLeft()
+      } else if (this.state.touchX - e.changedTouches[0].clientX < 0) {
+        this.handleSwapRight()
+      }
+      this.setState({touchX: null})
+    }
   }
   handleSwapLeft() {
     let { leftItem, frontItem, rightItem, itemCount } = this.state;
@@ -70,6 +90,11 @@ export default class CapabilitiesPageCarousel extends Component {
     return (
       <div className="row no-gutters justify-content-center">
         <div className="col-12">
+          <div
+            className="click-shield"
+            onTouchStart={this.handleTouchStart}
+            onTouchEnd={this.handleTouchEnd}
+          ></div>
           <div
             id="capPageCarousel"
             className="row no-gutters justify-content-center"
