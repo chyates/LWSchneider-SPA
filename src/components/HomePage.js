@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import React from 'react';
 import { isScrollingDown, isScrollingUp } from 'react-is-scrolling';
 
@@ -42,26 +42,35 @@ class HomePage extends React.Component {
     if (this.state.panelIndex === 0) {
       this.state.buttonText = ("Scroll")
     }
+    this.interval = setInterval(() => {
+      if (this.state.didScroll !== 0) {
+        this.handleChangePanels(this.state.didScroll)
+        this.handleRotateWindstop(this.state.didScroll)
+        this.setState({didScroll: 0})
+      }
+    }, 500)
   }
-  handleChangePanels = e => {
-    console.log(e.deltaY)
-    if (e.deltaY > 0 && this.state.panelIndex < this.state.assets.length - 1) {
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+  handleScroll = e => {
+    this.setState({
+      didScroll: this.state.didScroll + e.deltaY
+    })
+  }
+  handleChangePanels = direction => {
+    if (direction > 0 && this.state.panelIndex < this.state.assets.length - 1) {
       this.setState({
         panelIndex: this.state.panelIndex + 1
       });
-    } else if (e.deltaY < 0 && this.state.panelIndex > 0) {
+    } else if (direction < 0 && this.state.panelIndex > 0) {
       this.setState({
         panelIndex: this.state.panelIndex - 1
       })
     }
   };
-  handleRotateWindstop = e => {
-    console.log({deltaX: e.deltaX, deltaY: e.deltaY, deltaZ: e.deltaZ})
-    // deltaY > 0 => scrolling down
-    // deltaY < 0 => scrolling up
-    // deltaX != 0 => you are on a touchpad and scrolling sideways by accident
-    // deltaZ => no idea what this means
-    if (e.deltaY !== 0) this.props.dispatch(rotateOnce(e.deltaY));
+  handleRotateWindstop = direction => {
+    this.props.dispatch(rotateOnce(direction));
   }
   setButtonText(text) {
     this.setState({
@@ -108,23 +117,19 @@ class HomePage extends React.Component {
     return (
       <div 
         className="page" 
-        onWheel={e => {
-            e.persist()
-            // this.handleChangePanels(e, this.state.panelIndex)
-            // this.handleChangePanels(e, this.state.panelIndex)
-            _.debounce(e => this.handleChangePanels(e), 100)(e)
-            _.debounce(e => this.handleRotateWindstop(e), 100)(e)
-          }
-        }
+        onWheel={this.handleScroll}
       >
         {panels}
-        <ScrollButton
-          buttonText={
-            (panels[this.state.panelIndex] === 0) ? "Scroll" : ''
-          }
-          handleRotateWindstop={this.handleRotateWindstop}  
-          handleChangePanels={this.handleChangePanels}
-        />
+        {(this.state.panelIndex < this.state.assets.length - 1) ?
+          <ScrollButton
+            buttonText={
+              (panels[this.state.panelIndex] === 0) ? "Scroll" : ''
+            }
+            handleRotateWindstop={() => this.handleRotateWindstop(1)}  
+            handleChangePanels={() => this.handleChangePanels(1)}
+          />
+          : null
+        }
       </div>
     );
   }

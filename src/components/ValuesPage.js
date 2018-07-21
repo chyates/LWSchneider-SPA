@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+// import _ from 'lodash';
 import { connect } from 'react-redux';
 import { scaleWindstop } from '../actions/windstop';
 
@@ -14,7 +14,8 @@ import ValuesPageVideo from './ValuesPageVideo';
 class ValuesPage extends Component {
   state = {
     assets: [],
-    panelIndex: 0
+    panelIndex: 0,
+    didScroll: 0
   }
   componentDidMount() {
     fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/165')
@@ -32,15 +33,29 @@ class ValuesPage extends Component {
         }
       );
     this.props.dispatch(scaleWindstop());
+    this.interval = setInterval(() => {
+      if (this.state.didScroll !== 0) {
+        this.handleChangePanels(this.state.didScroll)
+        this.setState({didScroll: 0})
+      }
+    }, 500)
   }
-  handleChangePanels = () => {
-    if (this.state.panelIndex < this.state.assets.length - 1) {
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+  handleScroll = e => {
+    this.setState({
+      didScroll: this.state.didScroll + e.deltaY
+    })
+  }
+  handleChangePanels = direction => {
+    if (direction > 0 && this.state.panelIndex < this.state.assets.length - 1) {
       this.setState(() => ({
         panelIndex: this.state.panelIndex + 1
       }));
-    } else {
+    } else if (direction < 0 && this.state.panelIndex > 0) {
       this.setState(() => ({
-        panelIndex: 0
+        panelIndex: this.state.panelIndex - 1
       }));
     }
   };
@@ -101,9 +116,12 @@ class ValuesPage extends Component {
       </Panel>
     ));
     return (
-      <div className="page" onWheel={_.debounce(this.handleChangePanels, 100)}>
+      <div className="page" onWheel={this.handleScroll}>
         {panels}
-        <ScrollButton handleChangePanels={this.handleChangePanels} />
+        {(this.state.panelIndex < this.state.assets.length - 1) ?
+          <ScrollButton handleChangePanels={() => this.handleChangePanels(1)} />
+          : null
+        }
       </div>
     )
   }

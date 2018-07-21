@@ -7,7 +7,7 @@ const ScrollButton = props => (
       </div>
       <img
         onClick={props.handleRotateWindstop
-          ? () => (props.handleChangePanels(), props.handleRotateWindstop())
+          ? (e) => (props.handleChangePanels(e), props.handleRotateWindstop(e))
           : props.handleChangePanels
         }
         src="https://lws.impactpreview.com/wp-content/uploads/2018/06/scroll-arrow.svg"
