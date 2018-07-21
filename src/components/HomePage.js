@@ -43,19 +43,25 @@ class HomePage extends React.Component {
       this.state.buttonText = ("Scroll")
     }
   }
-  handleChangePanels = () => {
-    if (this.state.panelIndex < this.state.assets.length - 1) {
-      this.setState(() => ({
+  handleChangePanels = e => {
+    console.log(e.deltaY)
+    if (e.deltaY > 0 && this.state.panelIndex < this.state.assets.length - 1) {
+      this.setState({
         panelIndex: this.state.panelIndex + 1
-      }));
-    } else {
-      this.setState(() => ({
-        panelIndex: 0
-      }));
+      });
+    } else if (e.deltaY < 0 && this.state.panelIndex > 0) {
+      this.setState({
+        panelIndex: this.state.panelIndex - 1
+      })
     }
   };
-  handleRotateWindstop = () => {
-    this.props.dispatch(rotateOnce());
+  handleRotateWindstop = e => {
+    console.log({deltaX: e.deltaX, deltaY: e.deltaY, deltaZ: e.deltaZ})
+    // deltaY > 0 => scrolling down
+    // deltaY < 0 => scrolling up
+    // deltaX != 0 => you are on a touchpad and scrolling sideways by accident
+    // deltaZ => no idea what this means
+    if (e.deltaY !== 0) this.props.dispatch(rotateOnce(e.deltaY));
   }
   setButtonText(text) {
     this.setState({
@@ -102,7 +108,14 @@ class HomePage extends React.Component {
     return (
       <div 
         className="page" 
-        onWheel={() => (this.handleChangePanels(), this.handleRotateWindstop())}
+        onWheel={e => {
+            e.persist()
+            // this.handleChangePanels(e, this.state.panelIndex)
+            // this.handleChangePanels(e, this.state.panelIndex)
+            _.debounce(e => this.handleChangePanels(e), 100)(e)
+            _.debounce(e => this.handleRotateWindstop(e), 100)(e)
+          }
+        }
       >
         {panels}
         <ScrollButton
