@@ -1,7 +1,6 @@
 const windstopDefaultState = {
   rotate: 0,
   rotating: false,
-  height: '91.69vh'
 }
 
 export default (state = windstopDefaultState, action) => {

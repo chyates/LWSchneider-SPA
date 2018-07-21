@@ -11,22 +11,16 @@
   font-weight: normal;
   font-style: normal;
 }
-
+html {
+  height: 100vh;
+}
 body {
   background: $background-color;
   overflow: hidden;
   color: white;
 }
-#logo {
-  z-index: 999;
-  position: absolute;
-  left: 45px;
-  top: 20px;
-  max-width: 336px;
-  width: 20vw;
-}
 .page {
-  height: 90vw;
+  height: 100vh;
 }
 .container-fluid {
   padding: 0;
