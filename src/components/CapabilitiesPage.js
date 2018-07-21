@@ -110,31 +110,35 @@ class CapabilitiesPage extends React.Component {
           <div className="content-wrapper">
             <PanelTitle panelTitle={asset.panel_title} colSpan={6} />
             <div className="row no-gutters justify-content-center">
-              <p>Click Below to Explore</p>
+              <p className="explore-text d-none d-lg-block">Click Below to Explore</p>
             </div>
             <div className="row no-gutters justify-content-center">
-              <div className="col-6">
+              <div className="col-lg-6">
                 <div className="row no-gutters justify-content-between">
-                  <button
-                    className={
-                      this.state.activeButton === 0
-                        ? 'button--parts active'
-                        : 'button--parts'
-                    }
-                    onClick={this.handleChangePartsPanels}
-                  >
-                    Handguns
-                  </button>
-                  <button
-                    className={
-                      this.state.activeButton === 1
-                        ? 'button--parts active'
-                        : 'button--parts'
-                    }
-                    onClick={this.handleChangePartsPanels}
-                  >
-                    Modern Sporting Rifles
-                  </button>
+                  <div className="col-lg-auto col-6">
+                    <button
+                      className={
+                        this.state.activeButton === 0
+                          ? 'button--parts active'
+                          : 'button--parts'
+                      }
+                      onClick={this.handleChangePartsPanels}
+                    >
+                      Handguns
+                    </button>
+                  </div>
+                  <div className="col-lg-auto col-6">
+                    <button
+                      className={
+                        this.state.activeButton === 1
+                          ? 'button--parts active'
+                          : 'button--parts'
+                      }
+                      onClick={this.handleChangePartsPanels}
+                    >
+                      Modern Sporting Rifles
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

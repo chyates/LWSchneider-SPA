@@ -58,12 +58,12 @@ button:focus {
 }
 .button--parts:hover {
   background-color: $white;
-  border: 1px solid #0b3954;
+  border: none;
   color: #0b3954;
 }
 .button--parts.active {
   background-color: #fad150;
-  border: 1px solid #0b3954;
+  border: none;
   color: #0b3954;
   font-family: $Metropolis;
   font-size: 18px;
@@ -101,4 +101,16 @@ button:focus {
 }
 #SlideButton {
   left: 0;
+}
+@media (max-width: 991.99px) {
+  .button--parts {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+}
+@media (max-width: 576px) {
+  .scroll-button {
+    bottom: 5%;
+  }
 }

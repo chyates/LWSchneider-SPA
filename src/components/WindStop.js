@@ -7,7 +7,6 @@ class WindStop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      height: '91.69vh',
       rotate: 0,
       rotating: false,  
     };

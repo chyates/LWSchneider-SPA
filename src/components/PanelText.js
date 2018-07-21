@@ -15,7 +15,8 @@ const PanelText = (props) => {
       ]
     } else if (typeof (props.colSpan === "number")) {
       colClasses = [
-        `col-${props.colSpan}`
+        'col-10',
+        `col-lg-${props.colSpan}`
       ]
     } 
   }
@@ -25,7 +26,7 @@ const PanelText = (props) => {
         className={
           colClasses !== undefined
           ? colClasses.join(' ') 
-          : "col-5"
+          : "col-10 col-lg-5"
           }
       >
         <p className="panel-text">{props.panelText}</p>

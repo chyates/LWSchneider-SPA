@@ -1,31 +1,55 @@
-.navbar {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  z-index: 999;
+@media (min-width: 992px) {
+  .navbar {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 999;
+  }
+  .navbar-expand-lg .navbar-nav {
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  nav a {
+    color: $white !important;
+    font-family: 'Gill Sans';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 77px;
+    text-align: right;
+    text-transform: uppercase;
+  }
+  nav a:hover {
+    color: $link-yellow !important;
+  }
+  .is-active {
+    color: $link-yellow !important;
+  }
+  .is-active::before {
+    content: url('https://lws.impactpreview.com/wp-content/uploads/2018/06/scope-hovericon.svg');
+    margin-right: 15px;
+    position: relative;
+    top: 7px;
+  }
+  #careersLink.is-active::before {
+    content: none;
+  }
 }
-nav a {
-  color: $white !important;
-  font-family: 'Gill Sans';
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 77px;
-  text-align: right;
-  text-transform: uppercase;
+@media (max-width: 991.99px) {
+  .navbar {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    z-index: 999;
+  }
 }
-nav a:hover {
-  color: $link-yellow !important;
+.navbar-light .navbar-toggler-icon {
+  background-image: none;
+  display: none;
 }
-.is-active {
-  color: $link-yellow !important;
-}
-.is-active::before {
-  content: url('https://lws.impactpreview.com/wp-content/uploads/2018/06/scope-hovericon.svg');
-  margin-right: 15px;
-  position: relative;
-  top: 7px;
-}
-#careersLink.is-active::before {
-  content: none;
+.navbar-toggler {
+  border: none;
+  height: 30px;
+  width: 30px;
+  margin-left: auto;
 }

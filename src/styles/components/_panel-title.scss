@@ -13,3 +13,10 @@ h1#homePanel3 {
   font-weight: 200;
   line-height: 41px;
 }
+@media (max-width: 576px) {
+  .panel-title {
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+  }
+}

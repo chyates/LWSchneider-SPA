@@ -30,7 +30,7 @@ export default class CapabilitiesPageListings extends React.Component {
     ))
   return (
     <div className="row no-gutters justify-content-center">
-      <div className="col-7">
+      <div className="col-11 col-lg-7">
         <div className="row no-gutter justify-content-center">
           {listings}
         </div>

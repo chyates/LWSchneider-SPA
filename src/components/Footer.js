@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 import LinkedIn from './LinkedIn';
 
 const Footer = () => (
-  <div id="footer" className="row no-gutters justify-content-center">
+  <div
+    id="footer"
+    className="row no-gutters justify-content-center d-none d-lg-flex"
+  >
     <div className="col-11">
       <div className="row no-gutters">
         <div className="col-6">
