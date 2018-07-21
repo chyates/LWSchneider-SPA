@@ -149,11 +149,18 @@ class CapabilitiesPage extends React.Component {
         )}
       </Panel>
     ));
+    let buttonText = ''
+    if (panelIndex == 0) buttonText = 'See Parts'
+    else if (panelIndex == 1) buttonText = 'See Gallery'
+    else if (panelIndex == 2) buttonText = 'See Processes'
     return (
       <div className="page" onWheel={this.handleScroll}>
         {panels}
-        {(this.state.panelIndex < this.state.assets.length - 1) ?
-          <ScrollButton handleChangePanels={() => this.handleChangePanels(1)} />
+        {(panelIndex < assets.length - 1) ?
+          <ScrollButton
+            handleChangePanels={() => this.handleChangePanels(1)}
+            buttonText={buttonText}
+          />
           : null
         }
       </div>

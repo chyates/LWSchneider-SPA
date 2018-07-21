@@ -12,42 +12,24 @@ export default class CapabilitiesPageCarousel extends Component {
       itemCount: this.props.galleryImages.length
     };
     this.handleSwapLeft = this.handleSwapLeft.bind(this);
-    // this.handleSwapRight = this.handleSwapRight.bind(this);
+    this.handleSwapRight = this.handleSwapRight.bind(this);
   }
   handleSwapLeft() {
     let { leftItem, frontItem, rightItem, itemCount } = this.state;
     this.setState({
-      rightItem: rightItem + 1,
-      frontItem: frontItem + 1,
-      leftItem: leftItem + 1
+      rightItem: (rightItem < itemCount - 1) ? rightItem + 1 : 0,
+      frontItem: (frontItem < itemCount - 1) ? frontItem + 1 : 0,
+      leftItem: (leftItem < itemCount - 1) ? leftItem + 1 : 0
     });
-    if (rightItem == itemCount - 1) {
-      this.setState({ rightItem: 0 });
-    }
-    if (frontItem == itemCount - 1) {
-      this.setState({ frontItem: 0 });
-    }
-    if (leftItem == itemCount - 1) {
-      this.setState({ leftItem: 0 });
-    }
   }
-  // handleSwapRight() {
-  //   let { leftItem, frontItem, rightItem, itemCount } = this.state;
-  //   this.setState({
-  //     rightItem: rightItem - 1,
-  //     frontItem: frontItem - 1,
-  //     leftItem: leftItem - 1
-  //   });
-  //   if (rightItem == itemCount - 1) {
-  //     this.setState({ rightItem: 0 });
-  //   }
-  //   if (frontItem == itemCount - 1) {
-  //     this.setState({ frontItem: 0 });
-  //   }
-  //   if (leftItem == itemCount - 1) {
-  //     this.setState({ leftItem: 0 });
-  //   }
-  // }
+  handleSwapRight() {
+    let { leftItem, frontItem, rightItem, itemCount } = this.state;
+    this.setState({
+      rightItem: (rightItem > 0) ? rightItem - 1 : itemCount - 1,
+      frontItem: (frontItem > 0) ? frontItem - 1 : itemCount - 1,
+      leftItem: (leftItem > 0) ? leftItem - 1 : itemCount - 1
+    });
+  }
   render() {
     const { leftItem, frontItem, rightItem } = this.state;
     const images = this.props.galleryImages;
@@ -64,13 +46,27 @@ export default class CapabilitiesPageCarousel extends Component {
                   : 'items back'
           }
           key={i}
-          onTouchEnd={this.handleSwapLeft}
-          onClick={this.handleSwapLeft}
+          id={i}
+          onTouchEnd={
+            i === frontItem || i === rightItem
+              ? this.handleSwapLeft
+              : i === leftItem
+                ? this.handleSwapRight
+                : function(){}
+          }
+          onClick={
+            i === frontItem || i === rightItem
+              ? this.handleSwapLeft
+              : i === leftItem
+                ? this.handleSwapRight
+                : function(){}
+          }
         >
           <img className="parts-gallery-image" src={image.gallery_image} alt="" />
         </div>
       );
     });
+    console.log(this.state.itemCount)
     return (
       <div className="row no-gutters justify-content-center">
         <div className="col-12">

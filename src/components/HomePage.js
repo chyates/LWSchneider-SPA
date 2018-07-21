@@ -120,10 +120,10 @@ class HomePage extends React.Component {
         onWheel={this.handleScroll}
       >
         {panels}
-        {(this.state.panelIndex < this.state.assets.length - 1) ?
+        {(panelIndex < assets.length - 1) ?
           <ScrollButton
             buttonText={
-              (panels[this.state.panelIndex] === 0) ? "Scroll" : ''
+              (panelIndex === 0) ? "Scroll" : ''
             }
             handleRotateWindstop={() => this.handleRotateWindstop(1)}  
             handleChangePanels={() => this.handleChangePanels(1)}
