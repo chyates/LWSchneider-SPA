@@ -6,7 +6,7 @@ export default class HomePageCarousel extends Component {
     super(props);
   }
   render() {
-    const images = this.props.images;
+    let images = [...this.props.images, ...this.props.images.slice(0, 3)];
     const slideShow = images.map((image, i) => (
       <div 
         className="slide-show-img-container"

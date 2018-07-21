@@ -8,7 +8,7 @@ export default (state = windstopDefaultState, action) => {
     case 'ROTATE_ONCE':
       return {
         ...state,
-        rotate: state.rotate += 15
+        rotate: state.rotate += (action.direction >= 0) ? 15 : -15
       }
     case 'SET_SCALE':
       return {

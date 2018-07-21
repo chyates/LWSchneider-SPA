@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import React from 'react';
 import { isScrollingDown, isScrollingUp } from 'react-is-scrolling';
 
@@ -21,7 +21,9 @@ class HomePage extends React.Component {
     assets: [],
     panelIndex: 0,
     buttonText: '',
-    lastScrollPos: 0
+    lastScrollPos: 0,
+    // touchX: null,
+    touchY: null
   };
   componentDidMount() {
     fetch('https://lws.impactpreview.com/wp-json/wp/v2/pages/120')
@@ -42,20 +44,54 @@ class HomePage extends React.Component {
     if (this.state.panelIndex === 0) {
       this.state.buttonText = ("Scroll")
     }
+    this.interval = setInterval(() => {
+      if (this.state.didScroll !== 0) {
+        this.handleChangePanels(this.state.didScroll)
+        this.handleRotateWindstop(this.state.didScroll)
+        this.setState({didScroll: 0})
+      }
+    }, 500)
   }
-  handleChangePanels = () => {
-    if (this.state.panelIndex < this.state.assets.length - 1) {
-      this.setState(() => ({
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+  handleScroll = e => {
+    // console.log(Object.assign({}, e))
+    this.setState({
+      didScroll: this.state.didScroll + e.deltaY,
+    })
+  }
+  handleTouchStart = e => {
+    // console.log('touch start!', Object.assign({}, e))
+    this.setState({
+        // touchX: e.changedTouches[0].clientX,
+        touchY: e.changedTouches[0].clientY
+    })
+  }
+  handleTouchEnd = e => {
+    // console.log('touch end!', Object.assign({}, e))
+    if (this.state.touchY) {
+      this.handleChangePanels(this.state.touchY - e.changedTouches[0].clientY)
+      this.handleRotateWindstop(this.state.touchY - e.changedTouches[0].clientY)
+      this.setState({
+        // touchX: null,
+        touchY: null
+      })
+    }
+  }
+  handleChangePanels = direction => {
+    if (direction > 0 && this.state.panelIndex < this.state.assets.length - 1) {
+      this.setState({
         panelIndex: this.state.panelIndex + 1
-      }));
-    } else {
-      this.setState(() => ({
-        panelIndex: 0
-      }));
+      });
+    } else if (direction < 0 && this.state.panelIndex > 0) {
+      this.setState({
+        panelIndex: this.state.panelIndex - 1
+      })
     }
   };
-  handleRotateWindstop = () => {
-    this.props.dispatch(rotateOnce());
+  handleRotateWindstop = direction => {
+    this.props.dispatch(rotateOnce(direction));
   }
   setButtonText(text) {
     this.setState({
@@ -102,16 +138,21 @@ class HomePage extends React.Component {
     return (
       <div 
         className="page" 
-        onWheel={() => (this.handleChangePanels(), this.handleRotateWindstop())}
+        onWheel={this.handleScroll}
+        onTouchStart={this.handleTouchStart}
+        onTouchEnd={this.handleTouchEnd}
       >
         {panels}
-        <ScrollButton
-          buttonText={
-            (panels[this.state.panelIndex] === 0) ? "Scroll" : ''
-          }
-          handleRotateWindstop={this.handleRotateWindstop}  
-          handleChangePanels={this.handleChangePanels}
-        />
+        {(panelIndex < assets.length - 1) ?
+          <ScrollButton
+            buttonText={
+              (panelIndex === 0) ? "Scroll" : ''
+            }
+            handleRotateWindstop={() => this.handleRotateWindstop(1)}  
+            handleChangePanels={() => this.handleChangePanels(1)}
+          />
+          : null
+        }
       </div>
     );
   }
