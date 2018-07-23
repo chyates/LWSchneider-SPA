@@ -86,7 +86,7 @@ export default class CapabilitiesPageCarousel extends Component {
         </div>
       );
     });
-    console.log(this.state.itemCount)
+    // console.log(this.state.itemCount)
     return (
       <div className="row no-gutters justify-content-center">
         <div className="col-10">

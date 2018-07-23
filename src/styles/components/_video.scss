@@ -1,0 +1,10 @@
+.embed-responsive .value-vid {
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%)
+}
+@media screen and (max-width: 991px) {
+  .embed-responsive-21by9::before {
+    padding-top: 50%
+  }
+}

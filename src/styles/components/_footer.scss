@@ -7,6 +7,10 @@
 
 #careersLink{
   color: $white;
+
+  &:hover {
+    color: $link-yellow
+  }
   font-family: $Metropolis;
   font-size: 1.15vmax;
   font-weight: 200;
@@ -22,7 +26,7 @@
   line-height: 1.7vmax;
   text-decoration: none !important;
   &:hover {
-    color: $link-yellow;
+    color: $link-yellow !important;
   }
 }
 .address {
