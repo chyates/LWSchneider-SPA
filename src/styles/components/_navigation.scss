@@ -17,15 +17,33 @@
     text-align: center;
     text-transform: uppercase;
   }
+  .collapsing {
+    transition: none;
+    height: 80vh !important;
+  }
+  .collapse:not(.show).navbar-collapse {
+    background-color: #0b2d55;
+    height: 80vh;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    > #windstop {
+      > img {
+        height: 225vw !important;
+      }
+    }
+  }
   .collapse.show.navbar-collapse {
-    background-color: #0B2D55;
+    background-color: #0b2d55;
     background-size: 200vw;
     display: flex;
     height: 80vh;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
     > #windstop {
       > img {
-        height: 200vw !important;
+        height: 225vw !important;
       }
     }
   }

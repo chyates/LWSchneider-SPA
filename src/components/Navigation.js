@@ -18,6 +18,7 @@ export default class Navigation extends Component {
     })
   }
   render() {
+    console.log(Collapse.prototype);
     return <Navbar light expand="lg">
         <NavbarToggler 
           onClick={this.toggle} 
