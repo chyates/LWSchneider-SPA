@@ -8,7 +8,7 @@ export default class LinkedIn extends Component {
     this.setState({
       hover: true
     });
-  }
+  };
   render() {
     return (
       <div>
@@ -16,6 +16,7 @@ export default class LinkedIn extends Component {
           onMouseEnter={() => this.setState({ hover: true })}
           onMouseLeave={() => this.setState({ hover: false })}
           href="https://www.linkedin.com/company/l-w-schneider-inc/"
+          target="_blank"
         >
           {this.state.hover ? (
             <img

@@ -18,7 +18,7 @@ export default class HomePageCarousel extends Component {
     ))
     return (
       <div className="row no-gutters justify-content-center">
-        <div className="slideshow">
+        <div className="slideshow col-10 col-lg-4">
           <div className="slideshow-row">
             {slideShow}
           </div>

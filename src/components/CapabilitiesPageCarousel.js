@@ -91,7 +91,7 @@ export default class CapabilitiesPageCarousel extends Component {
       <div className="row no-gutters justify-content-center">
         <div className="col-12">
           <div
-            className="click-shield"
+            className="click-shield d-lg-none"
             onTouchStart={this.handleTouchStart}
             onTouchEnd={this.handleTouchEnd}
           ></div>
@@ -99,12 +99,9 @@ export default class CapabilitiesPageCarousel extends Component {
             id="capPageCarousel"
             className="row no-gutters justify-content-center"
           >
+            
             {slides}
           </div>
-          {/* <div className="row no-gutters justify-content-center">
-            <button onClick={this.handleSwapLeft}>Prev</button>
-            <button onClick={this.handleSwapLeft}>Next</button>
-          </div> */}
         </div>
       </div>
     );

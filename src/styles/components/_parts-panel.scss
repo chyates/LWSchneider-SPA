@@ -37,3 +37,15 @@ div#BoltCarrierGroupDiv {
 .handgun {
   height: 40vh;
 }
+@media (max-width: 576px) {
+  .parts-image.invisible {
+    height: 32vh;
+  }
+  .handgun {
+    height: 32vh;
+  }
+  .rifle {  
+    width: 95vw !important;
+    transform: rotateY(25deg);
+  }
+}

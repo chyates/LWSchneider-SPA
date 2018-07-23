@@ -4,19 +4,35 @@
   width: 100%;
   z-index: 999;
 }
-#footer a {
-  text-decoration: underline;
+
+#careersLink{
   color: $white;
+  font-family: $Metropolis;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 22px;
+  text-decoration: underline;
+  text-transform: uppercase;
 }
 .phone {
+  color: $white;
+  font-family: $Metropolis;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 22px;
   text-decoration: none !important;
-  :hover {
+  &:hover {
     color: $link-yellow;
   }
 }
 .address {
+  color: $white;
+  font-family: $Metropolis;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 22px;
   text-decoration: none !important;
-  :hover {
+  &:hover {
     color: $link-yellow !important;
   }
 }

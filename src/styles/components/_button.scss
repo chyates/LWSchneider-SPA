@@ -10,7 +10,7 @@ button:focus {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10000;
-  cursor: pointer
+  cursor: pointer;
 }
 .scroll-text {
   font-family: $Ashbury;
@@ -22,10 +22,14 @@ button:focus {
 .button--link {
   background-color: transparent;
   border: 1px solid #bfd7ea;
+  color: $white;
+  font-family: 'Gill Sans';
+  font-size: 20px;
+  font-weight: 300;
   height: 40px;
+  line-height: 18px;
   transition: 0.25s;
   width: 220px;
-  color: $white;
 }
 .button--link:hover {
   background-color: $white;

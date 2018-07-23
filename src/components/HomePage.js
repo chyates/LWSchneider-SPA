@@ -51,6 +51,7 @@ class HomePage extends React.Component {
         this.setState({didScroll: 0})
       }
     }, 500)
+    console.log(window.innerWidth);
   }
   componentWillUnmount() {
     clearInterval(this.interval)

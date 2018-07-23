@@ -2,7 +2,6 @@ const windstopDefaultState = {
   rotate: 0,
   rotating: false,
 }
-
 export default (state = windstopDefaultState, action) => {
   switch (action.type) {
     case 'ROTATE_ONCE':
