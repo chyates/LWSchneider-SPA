@@ -30,6 +30,7 @@ button:focus {
   line-height: 18px;
   transition: 0.25s;
   width: 220px;
+  cursor: pointer;
 }
 .button--link:hover {
   background-color: $white;
