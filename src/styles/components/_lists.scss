@@ -1,0 +1,37 @@
+.about-ul {
+  li {
+    color: $white;
+    font-family: $Ashbury;
+    font-size: 1.25vmax;
+    font-weight: 300;
+    line-height: 1.7vmax;
+  }
+}
+.capabilities-listing-header {
+  color: #fad150;
+  font-family: $Metropolis;
+  font-size: 36px;
+  font-weight: 200;
+  line-height: 40px;
+  text-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.74), 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+.capabilities-list {
+  padding-left: 20px;
+  li {
+    color: $white;
+    font-family: $Ashbury;
+    font-size: 1.25vmax;
+    font-weight: 300;
+    line-height: 1.7vmax;
+  }
+}
+.part-callouts {
+  padding-left: 25px;
+  li {
+    color: $white;
+    font-family: $Ashbury;
+    font-size: 1vmax;
+    font-weight: 300;
+    line-height: 1.7vmax;
+  }
+}

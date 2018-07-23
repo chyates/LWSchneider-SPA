@@ -48,7 +48,7 @@ const Footer = () => (
             </NavLink>
           </div>
           <div className="row no-gutters justify-content-end">
-            <p className="text-right">
+            <p className="copyright text-right">
               &copy; {new Date().getFullYear()} L.W. Schneider. All Rights Reserved.
             </p>
           </div>

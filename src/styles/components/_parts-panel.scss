@@ -18,14 +18,15 @@ div#FrontSightDiv {
   top: 15%;
 }
 div#UpperReceiverDiv {
-  right: 20%;
+  right: 25%;
+  top: -15%;
 }
 div#LowerReceiverDiv {
   left: 5%;
   bottom: 0;
 }
 div#BoltCarrierGroupDiv {
-  bottom: -30%;
+  bottom: -45%;
   right: 14%;
 }
 .parts-panel {
@@ -36,4 +37,22 @@ div#BoltCarrierGroupDiv {
 }
 .handgun {
   height: 40vh;
+}
+.rifle-image-wrapper {
+  height: 35vh;
+}
+.rifle {
+  height: 30vh;
+}
+@media (max-width: 576px) {
+  .parts-image.invisible {
+    height: 32vh;
+  }
+  .handgun {
+    height: 32vh;
+  }
+  .rifle {  
+    width: 95vw !important;
+    transform: rotateY(25deg);
+  }
 }

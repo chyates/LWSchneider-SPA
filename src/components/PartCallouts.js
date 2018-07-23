@@ -9,7 +9,8 @@ const PartCallouts = (props) => {
     </li>
   ))
   return (
-    <ul 
+    <ul
+      className="part-callouts" 
       style={props.style}
     >
       {callouts}

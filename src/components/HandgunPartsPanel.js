@@ -75,6 +75,9 @@ export default class PartsPanel extends Component {
             />
             {handgunPanels}
           </div>
+          <div className="row no-gutters justify-content-center">
+
+          </div>
         </div>
       </div>
     );

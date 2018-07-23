@@ -58,12 +58,12 @@ export default class CapabilitiesPageCarousel extends Component {
         <div
           className={
             i === frontItem
-              ? 'items front'
+              ? 'col-8 col-lg-5 items front'
               : i === leftItem
-                ? 'items left'
+                ? 'col-8 col-lg-5 items left'
                 : i === rightItem
-                  ? 'items right'
-                  : 'items back'
+                  ? 'col-8 col-lg-5 items right'
+                  : 'col-8 col-lg-5 items back'
           }
           key={i}
           id={i}
@@ -89,9 +89,9 @@ export default class CapabilitiesPageCarousel extends Component {
     // console.log(this.state.itemCount)
     return (
       <div className="row no-gutters justify-content-center">
-        <div className="col-12">
+        <div className="col-10">
           <div
-            className="click-shield"
+            className="click-shield d-lg-none"
             onTouchStart={this.handleTouchStart}
             onTouchEnd={this.handleTouchEnd}
           ></div>
@@ -101,10 +101,6 @@ export default class CapabilitiesPageCarousel extends Component {
           >
             {slides}
           </div>
-          {/* <div className="row no-gutters justify-content-center">
-            <button onClick={this.handleSwapLeft}>Prev</button>
-            <button onClick={this.handleSwapLeft}>Next</button>
-          </div> */}
         </div>
       </div>
     );
