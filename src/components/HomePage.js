@@ -22,7 +22,7 @@ class HomePage extends React.Component {
     panelIndex: 0,
     buttonText: '',
     lastScrollPos: 0,
-    // touchX: null,
+    touchX: null,
     touchY: null
   };
   componentDidMount() {
@@ -65,17 +65,22 @@ class HomePage extends React.Component {
   handleTouchStart = e => {
     // console.log('touch start!', Object.assign({}, e))
     this.setState({
-        // touchX: e.changedTouches[0].clientX,
+        touchX: e.changedTouches[0].clientX,
         touchY: e.changedTouches[0].clientY
     })
   }
   handleTouchEnd = e => {
     // console.log('touch end!', Object.assign({}, e))
-    if (this.state.touchY) {
-      this.handleChangePanels(this.state.touchY - e.changedTouches[0].clientY)
-      this.handleRotateWindstop(this.state.touchY - e.changedTouches[0].clientY)
+    let deltaX = this.state.touchX - e.changedTouches[0].clientX
+    let deltaY = this.state.touchY - e.changedTouches[0].clientY
+    let slope = Math.abs(deltaY / deltaX)
+    // console.log('∆X:', deltaX, '∆Y:', deltaY, 'slope:', slope)
+
+    if (this.state.touchY && slope >= .5) {
+      this.handleChangePanels(deltaY)
+      this.handleRotateWindstop(deltaY)
       this.setState({
-        // touchX: null,
+        touchX: null,
         touchY: null
       })
     }
