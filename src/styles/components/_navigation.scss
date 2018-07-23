@@ -1,3 +1,35 @@
+@media (max-width: 991.99px) {
+  .navbar {
+    padding-left: 0;
+    padding-right: 0;
+    position: absolute;
+    right: 0;
+    top: 25px;
+    width: 100%;
+    z-index: 999;
+  }
+  nav a {
+    color: $white !important;
+    font-family: $Metropolis;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 54px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .collapse.show.navbar-collapse {
+    background-color: #0B2D55;
+    background-size: 200vw;
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    > #windstop {
+      > img {
+        height: 200vw !important;
+      }
+    }
+  }
+}
 @media (min-width: 992px) {
   .navbar {
     position: absolute;
@@ -35,14 +67,7 @@
     content: none;
   }
 }
-@media (max-width: 991.99px) {
-  .navbar {
-    position: absolute;
-    top: 25px;
-    right: 0;
-    z-index: 999;
-  }
-}
+
 .navbar-light .navbar-toggler-icon {
   background-image: none;
   display: none;

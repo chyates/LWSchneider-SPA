@@ -2,6 +2,12 @@ const windstopDefaultState = {
   rotate: 0,
   rotating: false,
 }
+const baseHeight = () => (
+  (window.innerWidth < 992) ? '91.69vw' : '91.69vh'
+)
+const zoomHeight = () => (
+  (window.innerWidth < 992) ? '200vw' : '200vh'
+)
 export default (state = windstopDefaultState, action) => {
   switch (action.type) {
     case 'ROTATE_ONCE':
@@ -12,7 +18,7 @@ export default (state = windstopDefaultState, action) => {
     case 'SET_SCALE':
       return {
         ...state,
-        height: '200vh',
+        height: zoomHeight(),
         rotating: true
       }
     case 'REVERT_SCALE':
@@ -20,7 +26,7 @@ export default (state = windstopDefaultState, action) => {
         ...state,
         rotate: 0,
         rotating: false,
-        height: '91.69vh'
+        height: baseHeight()
       }
     default:
       return state;

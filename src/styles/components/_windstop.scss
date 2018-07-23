@@ -11,14 +11,14 @@
 }
 #windStop img {
   height: 91.69vh;
-  opacity: .2;
+  opacity: 0.2;
   transform: rotate(0deg);
 }
 .rotating {
-  animation-name: rotating; 
-  animation-duration: 300s; 
+  animation-name: rotating;
+  animation-duration: 300s;
   animation-timing-function: linear;
-  animation-delay: 0; 
+  animation-delay: 0;
   animation-iteration-count: infinite;
   animation-direction: normal;
   transform: scale(2);
@@ -26,23 +26,39 @@
 
 @keyframes rotating {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   25% {
-    transform: rotate(90deg)
+    transform: rotate(90deg);
   }
   50% {
-    transform: rotate(180deg)
+    transform: rotate(180deg);
   }
   75% {
-    transform: rotate(270deg)
+    transform: rotate(270deg);
   }
   100% {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
 }
 @media (max-width: 991.99px) {
-  #windStop {
-    display: none; 
+  // #windStop {
+  //   display: none;
+  // }
+}
+#windStopNav {
+  display: flex;
+  left: 50%;
+  height: fit-content;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9000;
+  img {
+    height: 200vw;
+    opacity: 0.2;
+    transform: rotate(0deg);
   }
 }

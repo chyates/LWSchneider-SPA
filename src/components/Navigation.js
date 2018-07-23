@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import { Collapse, Nav, Navbar, NavItem, NavLink as Link, NavbarBrand, NavbarToggler } from 'reactstrap';
+import WindStop from './WindStop';
 
 export default class Navigation extends Component {
   constructor(props) {
@@ -29,24 +30,30 @@ export default class Navigation extends Component {
         />
         <NavbarBrand />
         <Collapse isOpen={this.state.isOpen} navbar>
+          <div id="windStopNav">
+            <img
+              src="https://lws.impactpreview.com/wp-content/uploads/2018/06/windstop-overlay.svg"
+              alt="turny-thing"
+            />
+          </div>
           <Nav navbar>
             <NavItem>
-              <NavLink to="/capabilities" className="nav-link" activeClassName="is-active">
+              <NavLink to="/capabilities" className="nav-link" activeClassName="is-active" onClick={this.toggle}>
                 Capabilities
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/values" className="nav-link" activeClassName="is-active">
+              <NavLink to="/values" className="nav-link" activeClassName="is-active" onClick={this.toggle}>
                 Values
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/about" className="nav-link" activeClassName="is-active">
+              <NavLink to="/about" className="nav-link" activeClassName="is-active" onClick={this.toggle}>
                 About
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/contact" className="nav-link" activeClassName="is-active">
+              <NavLink to="/contact" className="nav-link" activeClassName="is-active" onClick={this.toggle}>
                 Contact
               </NavLink>
             </NavItem>

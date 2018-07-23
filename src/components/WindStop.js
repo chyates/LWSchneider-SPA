@@ -38,7 +38,5 @@ class WindStop extends React.Component {
 const mapStateToProps = (state) => ({
   windstop: state.windstop
 });
-const mapDispatchToProps = {
 
-}
-export default connect(mapStateToProps, mapDispatchToProps)(WindStop);
+export default connect(mapStateToProps)(WindStop);
