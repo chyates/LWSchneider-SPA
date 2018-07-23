@@ -16,6 +16,7 @@ class ValuesPage extends Component {
     assets: [],
     panelIndex: 0,
     didScroll: 0,
+    touchX: null,
     touchY: null
   }
   componentDidMount() {
@@ -51,13 +52,17 @@ class ValuesPage extends Component {
   }
   handleTouchStart = e => {
     this.setState({
-        touchY: e.changedTouches[0].clientY
+      touchX: e.changedTouches[0].clientX,
+      touchY: e.changedTouches[0].clientY
     })
   }
   handleTouchEnd = e => {
-    if (this.state.touchY) {
-      this.handleChangePanels(this.state.touchY - e.changedTouches[0].clientY)
-      this.setState({touchY: null})
+    let deltaX = this.state.touchX - e.changedTouches[0].clientX
+    let deltaY = this.state.touchY - e.changedTouches[0].clientY
+    let slope = Math.abs(deltaY / deltaX)
+    if (this.state.touchY && slope >= .5) {
+      this.handleChangePanels(deltaY)
+      this.setState({touchX: null, touchY: null})
     }
   }
   handleChangePanels = direction => {

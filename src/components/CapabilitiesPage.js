@@ -20,6 +20,7 @@ class CapabilitiesPage extends React.Component {
     activePartsPanel: 0,
     activeButton: 0,
     didScroll: 0,
+    touchX: null,
     touchY: null
   };
   componentDidMount() {
@@ -54,21 +55,22 @@ class CapabilitiesPage extends React.Component {
     })
   }
   handleTouchStart = e => {
-    console.log('touch start!', Object.assign({}, e))
     this.setState({
-        // touchX: e.changedTouches[0].clientX,
+        touchX: e.changedTouches[0].clientX,
         touchY: e.changedTouches[0].clientY
     })
   }
   handleTouchEnd = e => {
-    // console.log('touch end!', Object.assign({}, e))
-    if (this.state.touchY) {
-      this.handleChangePanels(this.state.touchY - e.changedTouches[0].clientY)
-      this.setState({touchY: null})
+    let deltaX = this.state.touchX - e.changedTouches[0].clientX
+    let deltaY = this.state.touchY - e.changedTouches[0].clientY
+    let slope = Math.abs(deltaY / deltaX)
+    if (this.state.touchY && slope >= .5) {
+      this.handleChangePanels(deltaY)
+      this.setState({touchX: null, touchY: null})
     }
   }
   handleChangePanels = direction => {
-    console.log(direction)
+    // console.log(direction)
     if (direction > 0 && this.state.panelIndex < this.state.assets.length - 1) {
       this.setState({
         panelIndex: this.state.panelIndex + 1
