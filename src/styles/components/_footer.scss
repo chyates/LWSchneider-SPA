@@ -7,16 +7,19 @@
 #footer a {
   text-decoration: underline;
   color: $white;
+  &:hover {
+    color: $link-yellow
+  }
 }
 .phone {
   text-decoration: none !important;
-  :hover {
-    color: $link-yellow;
+  &:hover {
+    color: $link-yellow !important;
   }
 }
 .address {
   text-decoration: none !important;
-  :hover {
+  &:hover {
     color: $link-yellow !important;
   }
 }
