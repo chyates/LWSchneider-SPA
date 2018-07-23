@@ -8,7 +8,7 @@
 #careersLink{
   color: $white;
   font-family: $Metropolis;
-  font-size: 16px;
+  font-size: 1.15vmax;
   font-weight: 200;
   line-height: 22px;
   text-decoration: underline;
@@ -17,9 +17,9 @@
 .phone {
   color: $white;
   font-family: $Metropolis;
-  font-size: 16px;
+  font-size: 1.15vmax;
   font-weight: 200;
-  line-height: 22px;
+  line-height: 1.7vmax;
   text-decoration: none !important;
   &:hover {
     color: $link-yellow;
@@ -28,11 +28,18 @@
 .address {
   color: $white;
   font-family: $Metropolis;
-  font-size: 16px;
+  font-size: 1.15vmax;
   font-weight: 200;
-  line-height: 22px;
+  line-height: 1.7vmax;
   text-decoration: none !important;
   &:hover {
     color: $link-yellow !important;
   }
+}
+.copyright {
+  color: $white;
+  font-family: $Metropolis;
+  font-size: 1.15vmax;
+  font-weight: 200;
+  line-height: 1.7vmax;
 }

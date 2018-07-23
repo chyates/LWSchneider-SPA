@@ -19,7 +19,7 @@ export default class PartsPanel extends Component {
     const riflesGroup = this.props.sportingRiflesGroup;
     const riflePanels = riflesGroup.map((image, i) => (
       <div className="col-10 position-absolute" key={image.part_label}>
-        <div className="row no-gutters justify-content-center">
+        <div className="rifle-image-wrapper row no-gutters justify-content-center">
           <img
             className={
               partsIndex == image.part_label

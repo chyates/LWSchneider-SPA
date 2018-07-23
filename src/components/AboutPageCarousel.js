@@ -51,16 +51,18 @@ export default class AboutPageCarousel extends Component {
     return (
       <div className="row no-gutters justify-content-center">
         <div className="col-6">
-          <Carousel
-            activeIndex={activeIndex}
-            next={this.next}
-            previous={this.previous}
-            ride={'carousel'}
-            interval={3000}
-          >
-            <CarouselIndicators items={slides} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-            {slides}
-          </Carousel>
+          <div className="row no-gutters justify-content-center">
+            <Carousel
+              activeIndex={activeIndex}
+              next={this.next}
+              previous={this.previous}
+              ride={'carousel'}
+              interval={3000}
+            >
+              <CarouselIndicators items={slides} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+              {slides}
+            </Carousel>
+          </div>
         </div>
       </div>
     )

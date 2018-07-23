@@ -68,7 +68,7 @@ class CapabilitiesPage extends React.Component {
     }
   }
   handleChangePanels = direction => {
-    // console.log(direction)
+    console.log(direction)
     if (direction > 0 && this.state.panelIndex < this.state.assets.length - 1) {
       this.setState({
         panelIndex: this.state.panelIndex + 1

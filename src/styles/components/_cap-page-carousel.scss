@@ -37,7 +37,7 @@
 }
 .left {
   opacity: 0.3;
-  margin-left: -17em !important;
+  margin-left: -20% !important;
   z-index: 1000;
   -webkit-transform: scale(0.75);
   -moz-transform: scale(0.75);
@@ -45,9 +45,17 @@
 }
 .right {
   opacity: 0.3;
-  margin-left: 17em !important;
+  margin-left: 20% !important;
   z-index: 1000;
   -webkit-transform: scale(0.75);
   -moz-transform: scale(0.75);
   transform: scale(0.75);
+}
+@media (max-width: 576px) {
+  #capPageCarousel {
+  height: 150px;
+  div {
+    height: 150px
+  }
+}
 }

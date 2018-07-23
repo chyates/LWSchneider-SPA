@@ -3,10 +3,14 @@
   font-family: $Metropolis;
   font-size: 5.6vh;
   font-weight: 200;
-  line-height: 50px;
+  line-height: 6.75vh;
+  margin: 2.25vh 0;
   text-align: center;
   text-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.74), 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
+}
+.contact-pipe {
+  line-height: 18px;
 }
 h1#homePanel3 {
   font-size: 4.6vh;

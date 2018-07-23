@@ -110,7 +110,7 @@ class AboutPage extends Component {
               panelTitle={asset.panel_title}
             />
             <div className="row no-gutters justify-content-center">
-              <div className="col-5">
+              <div className="col-6">
                 <div className="row no-gutters justify-content-center">
                   <img
                     id="familyImage"
@@ -121,8 +121,8 @@ class AboutPage extends Component {
               </div>
             </div>
             <div className="row no-gutters justify-content-center">
-              <div className="col-5">
-                <div className="row no-gutters">
+              <div className="col-6">
+                <div className="row no-gutters justify-content-center">
                   <div className="col-6">
                     <ul className="about-ul">
                       {asset.panel_bullets_col_1.map((item, i) => (
