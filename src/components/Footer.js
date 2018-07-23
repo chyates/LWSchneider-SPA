@@ -49,7 +49,7 @@ const Footer = () => (
           </div>
           <div className="row no-gutters justify-content-end">
             <p className="text-right">
-              &copy; 2018 L.W. Schneider. All Rights Reserved.
+              &copy; {new Date().getFullYear()} L.W. Schneider. All Rights Reserved.
             </p>
           </div>
         </div>
