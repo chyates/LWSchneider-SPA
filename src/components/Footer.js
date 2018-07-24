@@ -29,7 +29,7 @@ const Footer = () => (
                 </a>
               </div>
             </div>
-            <div className="col-auto d-flex align-items-center">
+            <div className="col-auto d-flex align-items-end">
               <LinkedIn />
             </div>
           </div>

@@ -111,7 +111,7 @@ class CareersPage extends Component {
                       Through our partnership with Peoplelink, we recruit
                       individuals who are interested in a career path and
                       willing to learn. Please call Peoplelink directly at
-                      815-915-8739, visit them at 102 South Main Street,
+                      <a className="phone" href="tel:+815-875-3835"> 815-915-8739</a>, visit them at 102 South Main Street,
                       Princeton, Illinois, or email <span className="career-email-span">
                         <a href="mailto:kclevenger@peoplelinkstaffing.com">
                           kclevenger@peoplelinkstaffing.com.

@@ -1,6 +1,5 @@
-// import _ from 'lodash';
+import _ from 'lodash';
 import React from 'react';
-import { isScrollingDown, isScrollingUp } from 'react-is-scrolling';
 
 import { connect } from 'react-redux';
 
@@ -16,12 +15,13 @@ import { revertWindstop, rotateOnce } from '../actions/windstop';
 
 class HomePage extends React.Component {
   state = {
+    assets: [],
+    buttonText: '',
     error: null,
     isLoaded: false,
-    assets: [],
-    panelIndex: 0,
-    buttonText: '',
+    isMobile: false,
     lastScrollPos: 0,
+    panelIndex: 0,
     touchX: null,
     touchY: null
   };
@@ -51,13 +51,16 @@ class HomePage extends React.Component {
         this.setState({didScroll: 0})
       }
     }, 500)
-    console.log(window.innerWidth);
+    window.innerWidth < 992 && this.setState({
+      isMobile: true
+    });
   }
   componentWillUnmount() {
     clearInterval(this.interval)
   }
   handleScroll = e => {
-    // console.log(Object.assign({}, e))
+    console.log(Object.assign({}, e))
+    e.persist()
     this.setState({
       didScroll: this.state.didScroll + e.deltaY,
     })
@@ -75,7 +78,6 @@ class HomePage extends React.Component {
     let deltaY = this.state.touchY - e.changedTouches[0].clientY
     let slope = Math.abs(deltaY / deltaX)
     // console.log('∆X:', deltaX, '∆Y:', deltaY, 'slope:', slope)
-
     if (this.state.touchY && slope >= .5) {
       this.handleChangePanels(deltaY)
       this.handleRotateWindstop(deltaY)
@@ -115,7 +117,11 @@ class HomePage extends React.Component {
             : 'homepage-panel inactive'
         }
         key={i + 1}
-        style={{ backgroundImage: `url(${asset.panel_image})` }}
+        style={
+          window.innerWidth < 576 
+          ? { backgroundImage: `url(${asset.panel_image_mobile})` }
+          : { backgroundImage: `url(${asset.panel_image})` }
+        }
       >
         <PanelTitle 
           colSpan={i === 3 ? 6 : 4}
@@ -148,6 +154,15 @@ class HomePage extends React.Component {
         onTouchStart={this.handleTouchStart}
         onTouchEnd={this.handleTouchEnd}
       >
+        {(panelIndex !== 0) ?
+          <ScrollButton
+            arrowUp={true}
+            buttonText={panelIndex === 1 && "Go Back"}
+            handleRotateWindstop={() => this.handleRotateWindstop(-1)}
+            handleChangePanels={() => this.handleChangePanels(-1)}
+          />
+          : null
+        }
         {panels}
         {(panelIndex < assets.length - 1) ?
           <ScrollButton

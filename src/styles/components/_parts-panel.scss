@@ -1,5 +1,5 @@
 div#SlideDiv {
-  left: 15%;
+  left: 8vw;
   top: 5%;
 }
 div#FrameDiv {
@@ -19,7 +19,7 @@ div#FrontSightDiv {
 }
 div#UpperReceiverDiv {
   right: 25%;
-  top: -15%;
+  top: -7%;
 }
 div#LowerReceiverDiv {
   left: 5%;
@@ -42,7 +42,8 @@ div#BoltCarrierGroupDiv {
   height: 35vh;
 }
 .rifle {
-  height: 30vh;
+  height: 25vh;
+  align-self: center;
 }
 @media (max-width: 576px) {
   .parts-image.invisible {

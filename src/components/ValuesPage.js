@@ -142,6 +142,14 @@ class ValuesPage extends Component {
         onTouchStart={this.handleTouchStart}
         onTouchEnd={this.handleTouchEnd}
       >
+        {(panelIndex !== 0) ?
+          <ScrollButton
+            arrowUp={true}
+            buttonText={panelIndex === 1 && "Go Back"}
+            handleChangePanels={() => this.handleChangePanels(-1)}
+          />
+          : null
+        }
         {panels}
         {(panelIndex < assets.length - 1) ?
           <ScrollButton

@@ -1,3 +1,7 @@
+.carousel {
+  position: relative;
+  height: 40vh;
+}
 .carousel-item {
   max-height: 339px;
   height: auto;
@@ -10,7 +14,7 @@
   }
 }
 .carousel-indicators {
-  bottom: -40px;
+  bottom: -20px;
   li {
     position: relative;
     -ms-flex: 0 1 auto;

@@ -27,7 +27,7 @@
     justify-content: center;
     overflow: hidden;
     position: relative;
-    > #windstop {
+    > #windstopNav {
       > img {
         height: 225vw !important;
       }
@@ -41,7 +41,7 @@
     justify-content: center;
     overflow: hidden;
     position: relative;
-    > #windstop {
+    > #windstopNav {
       > img {
         height: 225vw !important;
       }
@@ -52,7 +52,7 @@
   .navbar {
     position: absolute;
     top: 50%;
-    right: 0;
+    right: 2%;
     transform: translateY(-50%);
     z-index: 999;
   }
@@ -83,6 +83,9 @@
   }
   #careersLink.is-active::before {
     content: none;
+  }
+  #windStopNav {
+    display: none !important;
   }
 }
 

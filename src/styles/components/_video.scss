@@ -1,7 +1,8 @@
 .embed-responsive .value-vid {
-  width: auto;
+  height: 28vmax;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
+  width: auto;
 }
 @media screen and (max-width: 991px) {
   .embed-responsive-21by9::before {

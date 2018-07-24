@@ -5,11 +5,11 @@
   z-index: 999;
 }
 
-#careersLink{
+#careersLink {
   color: $white;
 
   &:hover {
-    color: $link-yellow
+    color: $link-yellow;
   }
   font-family: $Metropolis;
   font-size: 1.15vmax;
@@ -19,22 +19,22 @@
   text-transform: uppercase;
 }
 .phone {
-  color: $white;
+  color: #fefffe;
   font-family: $Metropolis;
-  font-size: 1.15vmax;
+  font-size: 0.95vmax;
   font-weight: 200;
-  line-height: 1.7vmax;
+  line-height: 1.5vmax;
   text-decoration: none !important;
   &:hover {
     color: $link-yellow !important;
   }
 }
 .address {
-  color: $white;
+  color: #fefffe;
   font-family: $Metropolis;
-  font-size: 1.15vmax;
+  font-size: 0.95vmax;
   font-weight: 200;
-  line-height: 1.7vmax;
+  line-height: 1.5vmax;
   text-decoration: none !important;
   &:hover {
     color: $link-yellow !important;
@@ -43,7 +43,7 @@
 .copyright {
   color: $white;
   font-family: $Metropolis;
-  font-size: 1.15vmax;
+  font-size: 0.75vmax;
   font-weight: 200;
   line-height: 1.7vmax;
 }

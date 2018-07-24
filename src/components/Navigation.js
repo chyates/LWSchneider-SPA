@@ -13,9 +13,11 @@ export default class Navigation extends Component {
     this.toggle = this.toggle.bind(this)
   }
   toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
+    if(window.innerWidth < 992) {
+      this.setState({
+        isOpen: !this.state.isOpen
+      })
+    }
   }
   render() {
     console.log(Collapse.prototype);
@@ -39,22 +41,42 @@ export default class Navigation extends Component {
           </div>
           <Nav navbar>
             <NavItem>
-              <NavLink to="/capabilities" className="nav-link" activeClassName="is-active" onClick={this.toggle}>
+              <NavLink 
+                to="/capabilities" 
+                className="nav-link" 
+                activeClassName="is-active" 
+                onClick={this.toggle}
+              >
                 Capabilities
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/values" className="nav-link" activeClassName="is-active" onClick={this.toggle}>
+              <NavLink 
+                to="/values" 
+                className="nav-link" 
+                activeClassName="is-active" 
+                onClick={this.toggle}
+              >
                 Values
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/about" className="nav-link" activeClassName="is-active" onClick={this.toggle}>
+              <NavLink 
+                to="/about" 
+                className="nav-link" 
+                activeClassName="is-active" 
+                onClick={this.toggle}
+              >
                 About
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/contact" className="nav-link" activeClassName="is-active" onClick={this.toggle}>
+              <NavLink 
+                to="/contact" 
+                className="nav-link" 
+                activeClassName="is-active" 
+                onClick={this.toggle}
+              >
                 Contact
               </NavLink>
             </NavItem>
